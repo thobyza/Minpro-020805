@@ -1,7 +1,9 @@
+import { HomePage } from "./pages/homePage";
+
 function App() {
   return (
     <div>
-      <h1>halo bang</h1>
+      <HomePage />
     </div>
   );
 }
