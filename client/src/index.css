@@ -1,3 +1,17 @@
+/* Tailwind */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Font */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+/* Elements */
+html {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+nav {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
