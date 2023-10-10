@@ -1,5 +1,6 @@
 import { HomePage } from "./pages/homePage";
 
+
 function App() {
   return (
     <div>
@@ -7,5 +8,4 @@ function App() {
     </div>
   );
 }
-
 export default App;
