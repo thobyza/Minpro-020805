@@ -1,3 +1,4 @@
+
 export const BottomMenu = () => {
   return (
     <div className="fixed bottom-0 left-0 right-0 w-full border-t-2 bg-white px-7 py-2.5 lg:hidden">
