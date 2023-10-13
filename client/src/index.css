@@ -4,13 +4,15 @@
 @tailwind utilities;
 
 /* Font */
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700,800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Young+Serif&display=swap');
 
 /* Elements */
 html {
   font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
+/*  */
 nav {
   font-size: 0.9rem;
   font-weight: 500;
@@ -18,4 +20,21 @@ nav {
 
 ion-icon {
   color: white;
+}
+
+/* Landing Section */
+.landingImg {
+  /* background-image: url("./assets/landing-img.jpg"); */
+  background-image: url("./assets/bg-1.jpg");
+  height: 60vh;
+  background-size: cover;
+  background-position: center;
+  /* background-repeat: no-repeat; */
+}
+
+.title-landing {
+  font-weight: 800;
+  letter-spacing: -2px;
+  word-spacing: 5px;
+  line-height: 100%;
 }
