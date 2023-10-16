@@ -4,9 +4,11 @@ import festi from "../assets/pexels-photo-1776151.jpg";
 import { Formik, Form, ErrorMessage, Field } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { setData } from "../redux/userSlice";
 import { useNavigate } from "react-router-dom";
 
-const RegisterSchema = Yup.object().shape({
+const LoginSchema = Yup.object().shape({
   email: Yup.string()
     .required("Email is required")
     .email("Invalid email format"),
@@ -15,26 +17,32 @@ const RegisterSchema = Yup.object().shape({
     .required("Password is required"),
 });
 
-const referralCode = () => {
-  return Math.random().toString(36).substring(2, 8);
-};
-
-export function Register() {
+export function Login() {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleSubmit = async (data) => {
     try {
-      await axios.post(`http://localhost:2000/users?`, data);
-      navigate("/");
+      const response = await axios.get(
+        `http://localhost:2000/users?email=${data.email}&password=${data.password}`,
+      );
+      if (response.data[0]?.id) {
+        dispatch(setData(response.data[0]));
+        localStorage.setItem("id", response.data[0]?.id);
+        navigate("/");
+        window.location.reload();
+      } else {
+        alert("User not found");
+      }
     } catch (err) {
       console.log(err);
     }
   };
-  // from-green-600 from-20% via-gray-300
+
   return (
     <>
-      <div className="flex min-h-screen flex-col items-center bg-gradient-to-br  to-white bg-top  sm:justify-center sm:pt-0 lg:h-screen lg:bg-none">
-        <div className="mt-7 flex items-center gap-3 sm:-mt-12 lg:absolute lg:right-72 lg:top-0 lg:-mr-2 lg:-mt-2">
+      <div className="flex min-h-screen flex-col items-center bg-gradient-to-b from-green-400 from-35% to-white to-35% bg-top  sm:justify-center sm:pt-0 lg:h-screen lg:bg-none">
+        <div className="mt-5 flex items-center gap-2 sm:-mt-12 lg:absolute lg:right-60 lg:top-0 lg:-mt-2 lg:mr-10">
           <img
             className="w-12 pt-10 md:w-10 lg:w-10"
             src={imgLogo}
@@ -53,27 +61,24 @@ export function Register() {
           <div className="md:px-19 m-auto mt-10 overflow-hidden rounded-2xl bg-white px-6 py-4 shadow-2xl sm:max-w-md sm:rounded-2xl lg:relative lg:col-span-1 lg:-mr-0 lg:mt-40 lg:bg-none lg:shadow-none">
             <header>
               <h1 className="flex justify-center text-xl font-semibold text-[#393E46] md:text-2xl lg:justify-start">
-                Buat akun FestiHub kamu
+                Masuk ke akunmu
               </h1>
               <div className="mt-4 flex justify-center text-[#393E46] md:text-lg lg:justify-start">
-                Sudah punya akun?{" "}
+                Tidak punya akun FestiHub?{" "}
                 <span>
                   <a
                     className="ml-1 text-[#4ECCA3] hover:underline"
-                    href="/login"
+                    href="/register"
                   >
-                    Masuk
+                    Daftar
                   </a>
                 </span>
               </div>
             </header>
+
             <Formik
-              initialValues={{
-                email: "",
-                password: "",
-                referral: referralCode(),
-              }}
-              validationSchema={RegisterSchema}
+              initialValues={{ email: "", password: "" }}
+              validationSchema={LoginSchema}
               onSubmit={(values, action) => {
                 console.log(values);
                 handleSubmit(values);
@@ -90,6 +95,7 @@ export function Register() {
                           label="Email address"
                           type="email"
                           name="email"
+                          color="black"
                           className="mr-16 mt-1 block rounded-md border border-gray-400 py-2 pl-2 shadow-sm md:-ml-1 md:mr-72"
                         />
                         <ErrorMessage
@@ -106,7 +112,6 @@ export function Register() {
                           label="Password"
                           type="password"
                           name="password"
-                          autoComplete="off"
                           className="mr-16 mt-1 block rounded-md border border-gray-400 py-2 pl-2 shadow-sm md:-ml-1 md:mr-72"
                         />
                         <ErrorMessage
@@ -121,13 +126,14 @@ export function Register() {
                         type="submit"
                         className="w-full transform rounded-md bg-[#4ECCA3] px-4 py-2 tracking-wide text-white transition-colors duration-500 hover:bg-green-600 focus:outline-none md:w-full md:text-lg"
                       >
-                        Regiter
+                        Masuk
                       </button>
                     </div>
                   </Form>
                 );
               }}
             </Formik>
+
             <div className="my-4 flex w-full items-center">
               <span className="h-0.5 w-full bg-[#bbbbbb]" />
               <p className="rounded-xl border border-[#bbbbbb] px-3 text-[#393E46]">
