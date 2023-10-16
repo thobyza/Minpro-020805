@@ -4,7 +4,9 @@ module.exports = {
     "./src/components/**/*.{jsx,js}",
     "./src/pages/**/*.{jsx,js}",
     "./node_modules/tw-elements-react/dist/js/**/*.js",
+    "./node_modules/flowbite/**/*.js"
   ],
+
   theme: {
     extend: {
       backgroundImage: {
@@ -19,4 +21,12 @@ module.exports = {
     },
   },
   plugins: [require("tw-elements-react/dist/plugin.cjs")],
-};
+  daisyui: {
+    themes: ["light"],
+  },
+  plugins: [
+    require("daisyui"),
+    require('flowbite/plugin')
+  ],
+}
+

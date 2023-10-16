@@ -4,13 +4,22 @@
 @tailwind utilities;
 
 /* Font */
-@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700,800&display=swap');
+
+
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Oswald:wght@500;700&display=swap');
+
+/* font-family: 'Anton', sans-serif;
+font-family: 'Bebas Neue', sans-serif;
+font-family: 'Oswald', sans-serif; */
+
 
 /* Elements */
 html {
   font-family: "Plus Jakarta Sans", sans-serif;
 }
 
+/*  */
 nav {
   font-size: 0.9rem;
   font-weight: 500;
@@ -19,3 +28,28 @@ nav {
 ion-icon {
   color: white;
 }
+
+/* Landing Section */
+.landingImg {
+  /* background-image: url("./assets/landing-img.jpg"); */
+  background-image: url("./assets/bg-1.jpg");
+  height: 60vh;
+  background-size: cover;
+  background-position: center;
+  /* background-repeat: no-repeat; */
+}
+
+.title-landing-sm {
+  font-family: 'Anton', sans-serif;
+  /* font-family: 'Bebas Neue', sans-serif; */
+  /* font-family: 'Oswald', sans-serif; */
+  line-height: 120%;
+}
+
+.title-landing {
+  font-family: 'Anton', sans-serif;
+  letter-spacing: -1px;
+  word-spacing: 5px;
+  line-height: 100%;
+}
+
