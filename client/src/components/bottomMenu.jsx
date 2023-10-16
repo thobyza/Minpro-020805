@@ -16,7 +16,7 @@ export const BottomMenu = () => {
         </li>
         <li>
           <button className="flex flex-col items-center justify-center gap-1 text-gray-500">
-            <i class="ri-compass-4-line text-xl"></i>
+            <i className="ri-compass-4-line text-xl"></i>
             <span className="text-sm font-semibold">Discover</span>
           </button>
         </li>

@@ -2,8 +2,10 @@
 module.exports = {
   content: [
     "./src/components/**/*.{jsx, js}",
-    "./src/pages/**/*.{jsx, js}"
+    "./src/pages/**/*.{jsx, js}",
+    "./node_modules/flowbite/**/*.js"
   ],
+
   theme: {
     extend: {
       colors: {
@@ -12,6 +14,14 @@ module.exports = {
       }
     },
   },
-  plugins: [],
+
+  daisyui: {
+    themes: ["light"],
+  },
+
+  plugins: [
+    require("daisyui"),
+    require('flowbite/plugin')
+  ],
 }
 

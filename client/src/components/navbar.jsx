@@ -13,13 +13,24 @@ export const Navbar = () => {
 
   return (
     <div className="fixed left-0 top-0 w-full shadow-md">
-      <div className="items-center justify-between bg-white px-6 py-5 md:flex md:px-10 md:py-3">
+      <div className="md:flex items-center justify-between bg-white px-6 py-5 md:flex md:px-10 md:py-3">
+        {/* Logo */}
         <div
           className="flex cursor-pointer items-center font-[Poppins] text-2xl font-bold 
                 text-gray-800"
         >
           <img src={appLogo} alt="" className="h-10" />
         </div>
+        {/* Search bar */}
+        <div className="flex-1 px-[8vw] hidden md:flex">
+          <input 
+            type="search" 
+            id="default-search" 
+            class="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-3xl bg-gray-50 focus:ring-blue-500 focus:border-blue-500s focus:outline-none" placeholder="Search events..."
+          />
+          <ion-icon name="search-outline"></ion-icon>
+        </div>
+        {/* dropdown menu */}
         <div
           onClick={() => setOpen(!open)}
           className="absolute right-5 top-5 flex h-10 w-10 cursor-pointer items-center justify-center rounded-lg bg-accent-grey-1 text-3xl duration-300 ease-in hover:bg-accent-green-1 md:top-3 md:hidden"

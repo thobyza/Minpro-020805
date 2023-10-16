@@ -7,8 +7,9 @@ export default class LandingSection extends Component {
   render() {
     return (
       <>
+        {/* for md below */}
         <div className="landingImg mt-22 flex flex-col justify-center items-center md:hidden">
-          <h1 className="flex text-center text-white text-3xl px-8 mb-6 pt-8">FIND SOMETHING GREAT TO DO</h1>
+          <h1 className="title-landing-sm flex text-center text-white text-[2.4rem] px-14 mb-6 pt-8">FIND SOMETHING GREAT TO DO</h1>
           <button
               type="button"
               className="rounded-lg bg-accent-green-1 px-3 py-2.5 text-sm font-medium text-white hover:bg-accent-green-1 focus:outline-none focus:ring-1 focus:ring-emerald-500"
@@ -17,13 +18,13 @@ export default class LandingSection extends Component {
             </button>
         </div>
         {/* for md above */}
-        <div className="mt-[9vh] px-[4vw] py-[4vh] h-[85vh] hidden md:flex justify-between">
+        <div className="mt-[9vh] px-[5vw] py-[4vh] h-[85vh] hidden md:flex justify-between">
           <div className="flex-1 self-end">
-            <h1 className="text-[4.5rem] title-landing w-4/5">FIND SOMETHING GREAT TO DO</h1>
-            <p className="mt-6 w-4/5">Incredible live shows. Upfront pricing. Relevant recommendations. We make going out easy.</p>
+            <h1 className="text-[5rem] title-landing w-4/5">FIND SOMETHING GREAT TO DO</h1>
+            <p className="mt-6 w-4/5 text-[1.1rem]">Incredible live shows. Upfront pricing. Relevant recommendations. We make going out easy.</p>
             <button
                 type="button"
-                className="rounded-lg bg-accent-green-1 px-3 py-2.5 mt-8 text-sm font-medium text-white hover:bg-accent-green-1 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                className="rounded-lg bg-accent-green-1 px-3 py-2.5 mt-8 text-md font-medium text-white hover:bg-accent-green-1 focus:outline-none focus:ring-1 focus:ring-emerald-500"
               >
                 Browse Events
             </button>
