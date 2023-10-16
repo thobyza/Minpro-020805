@@ -1,6 +1,7 @@
 import { BottomMenu } from "../components/bottomMenu";
 import { Navbar } from "../components/navbar";
 
+
 export const HomePage = () => {
   return (
     <>

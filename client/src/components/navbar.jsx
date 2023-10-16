@@ -1,7 +1,7 @@
-
 import { useState } from "react";
 import appLogo from "../assets/logo-full.png";
 import { ButtonNav } from "./buttonNav";
+import { Link } from "react-router-dom";
 
 export const Navbar = () => {
   let Links = [
@@ -44,18 +44,22 @@ export const Navbar = () => {
             </li>
           ))}
           <li className="mt-3 flex flex-col items-center gap-5 pr-6 md:ml-5 md:mt-0 md:flex-row md:gap-4 md:pr-0">
-            <button
-              type="button"
-              className="w-full rounded-lg border border-gray-300 bg-white px-5 py-2.5 text-sm font-medium text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-1 focus:ring-gray-200"
-            >
-              Register
-            </button>
-            <button
-              type="button"
-              className="w-full rounded-lg border border-gray-300 bg-accent-grey-1 px-5 py-2.5 text-sm font-medium text-white hover:bg-accent-green-1 focus:outline-none focus:ring-1 focus:ring-emerald-500"
-            >
-              Sign in
-            </button>
+            <Link to="/register">
+              <button
+                type="button"
+                className="w-full rounded-lg border border-gray-300 bg-white px-5 py-2.5 text-sm font-medium text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-1 focus:ring-gray-200"
+              >
+                Register
+              </button>
+            </Link>
+            <Link to="/login">
+              <button
+                type="button"
+                className="w-full rounded-lg border border-gray-300 bg-accent-grey-1 px-5 py-2.5 text-sm font-medium text-white hover:bg-accent-green-1 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+              >
+                Sign in
+              </button>
+            </Link>
           </li>
         </ul>
       </div>

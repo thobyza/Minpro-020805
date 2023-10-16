@@ -1,0 +1,28 @@
+{
+  "users": [
+    {
+      "email": "andre@gmail.com",
+      "password": "123456",
+      "referral": "59j9t3",
+      "id": 1
+    },
+    {
+      "email": "gatesluthfi@gmail.com",
+      "password": "123456",
+      "referral": "413bxy",
+      "id": 2
+    },
+    {
+      "email": "festihub@gmail.com",
+      "password": "festi1212",
+      "referral": "7sw4gk",
+      "id": 3
+    },
+    {
+      "email": "agung@gmail.com",
+      "password": "agunf979123",
+      "referral": "p0ffi7",
+      "id": 4
+    }
+  ]
+}
