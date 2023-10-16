@@ -1,10 +1,11 @@
+import { CreateEvents } from "./pages/createEvents";
 import { HomePage } from "./pages/homePage";
-
 
 function App() {
   return (
     <div>
-      <HomePage />
+      {/* <HomePage /> */}
+      <CreateEvents />
     </div>
   );
 }
