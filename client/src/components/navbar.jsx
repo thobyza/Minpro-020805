@@ -14,7 +14,7 @@ export const Navbar = () => {
 
   return (
     <div className="fixed left-0 top-0 z-50 w-full shadow-md">
-      <div className="items-center justify-between bg-white px-6 py-5 md:flex md:flex md:px-10 md:py-3">
+      <div className="items-center justify-between bg-white py-5 md:flex md:flex md:px-[5vw] md:py-3">
         {/* Logo */}
         <div
           className="flex cursor-pointer items-center font-[Poppins] text-2xl font-bold 

@@ -4,6 +4,7 @@ import { EventCardList } from "../components/eventCardList";
 import LandingSection from "../components/landingSection";
 
 import { Navbar } from "../components/navbar";
+import { TopDestination } from "../components/topDestination";
 
 export const HomePage = () => {
   return (
@@ -13,6 +14,7 @@ export const HomePage = () => {
       <Categories />
       <EventCardList />
       <BottomMenu />
+      <TopDestination />
       <div className="h-36"></div>
     </>
   );
