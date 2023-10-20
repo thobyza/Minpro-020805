@@ -3,12 +3,14 @@ import { CreateEvents } from "./pages/createEvents";
 import { HomePage } from "./pages/homePage";
 import { LoginPage } from "./pages/loginPage";
 import { RegisterPage } from "./pages/registerPage";
+import { BrowseEvents } from "./pages/browseEvents";
 
 const router = createBrowserRouter([
   { path: "/", element: <HomePage /> },
   { path: "/login", element: <LoginPage /> },
   { path: "/register", element: <RegisterPage /> },
-  { path: "/create-events", element: <CreateEvents /> }
+  { path: "/create-events", element: <CreateEvents /> },
+  { path: "/browse-events", element: <BrowseEvents /> }
 ]);
 
 function App() {

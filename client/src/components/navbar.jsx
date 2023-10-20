@@ -1,6 +1,5 @@
 import { useState } from "react";
 import appLogo from "../assets/logo-full.png";
-import { ButtonNav } from "./buttonNav";
 import { Link } from "react-router-dom";
 
 export const Navbar = () => {

@@ -17,12 +17,12 @@ export const Categories = () => {
   ];
 
   return (
-    <div className="flex flex-col bg-gray-100 px-6 pb-2 pt-4 md:px-[5vw] md:py-5">
-      <h2 className="text-lg font-semibold">Popular Categories</h2>
+    <div className="flex flex-col bg-[#EEEEEE] px-6 pb-2 pt-4 md:px-[5vw] md:py-7">
+      <h2 className="text-lg font-medium text-gray-600">Popular Categories</h2>
       <div className="carousel carousel-center rounded-box flex h-[152px] space-x-2 py-4">
         {categoriesItems.map((item) => (
-          <div className="items-center-e33333 carousel-item flex h-full flex-col">
-            <div className="rounded-box flex w-[100px] flex-grow items-center justify-center border border-gray-400 hover:border-accent-green-1 hover:bg-accent-green-1 hover:bg-opacity-10">
+          <div className="carousel-item flex h-full flex-col items-center">
+            <div className="flex w-[100px] flex-grow items-center justify-center rounded-xl border border-gray-400 hover:border-accent-green-1 hover:bg-accent-green-1 hover:bg-opacity-10">
               <img
                 src={item.icon}
                 className="h-11 opacity-50 hover:stroke-red-50"

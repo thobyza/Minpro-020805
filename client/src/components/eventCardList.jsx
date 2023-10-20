@@ -60,20 +60,22 @@ export const EventCardList = () => {
   ];
 
   return (
-    <section class="bg-gray-50 pt-8">
+    <section class="bg-gray-50 pt-12">
       {/* Title */}
       <div className="mb-4 flex items-center justify-between px-[5vw]">
-        <h1 className="ml-4 text-[1.5rem] font-bold">Top Events</h1>
+        <h1 className=" ml-2 text-3xl font-bold">
+          <span className="underline-green">Top Events</span>
+        </h1>
         <button
           type="button"
-          className="rounded-lg border border-gray-300 bg-accent-grey-1 px-5 py-2.5 text-sm font-medium text-white hover:bg-accent-green-1 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+          className="rounded-lg border border-gray-300 bg-transparent px-5 py-2.5 text-sm font-medium text-gray-900 hover:border-accent-green-1 hover:bg-accent-green-1 hover:text-white"
         >
           View More
         </button>
       </div>
 
       {/* Card Slideshow  */}
-      <div class="card-slideshow flex-no-wrap scrolling-touch no-scrollbar flex w-full space-x-6 overflow-x-auto px-[5vw] pb-14 pt-3">
+      <div class="card-slideshow flex-no-wrap scrolling-touch no-scrollbar flex w-full space-x-6 overflow-x-auto px-[5vw] pb-[4.5rem] pt-3">
         {cardItems.map((item) => (
           <div class="group card w-[17rem] flex-none rounded-xl bg-white p-3 shadow-lg duration-300 hover:scale-105 hover:transform hover:shadow-xl">
             <a href="#">

@@ -20,7 +20,7 @@ export default class LandingSection extends Component {
           </button>
         </div>
         {/* for md above */}
-        <div className="mt-[9vh] hidden h-[85vh] justify-between px-[5vw] py-[4vh] md:flex">
+        <div className="mb-5 mt-[9vh] hidden h-[90vh] justify-between px-[5vw] py-[4vh] md:flex">
           <div className="flex-1 self-end">
             <h1 className="title-landing w-4/5 text-[5rem]">
               FIND SOMETHING GREAT TO DO
