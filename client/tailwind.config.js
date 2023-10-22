@@ -23,6 +23,7 @@ module.exports = {
       },
     },
   },
+
   plugins: [
     require('flowbite/plugin'),
     require("tw-elements-react/dist/plugin.cjs")

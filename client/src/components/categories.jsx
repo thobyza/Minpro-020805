@@ -1,5 +1,4 @@
 import iconFood from "../assets/streetfood.png";
-// import iconMusic from '../assets/icons-music.png'
 import iconMusic from "../assets/icons-music.svg";
 import iconWorkshop from "../assets/icons-workshop.png";
 import iconTheatre from "../assets/icons-theatre.png";

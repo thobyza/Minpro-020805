@@ -50,7 +50,6 @@ ion-icon {
 }
 
 /* Event Card List */
-
 .card-slideshow::after {
   content: "";
   flex: 0 0 2rem;

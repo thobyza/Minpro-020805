@@ -1,5 +1,4 @@
 import appLogo from "../assets/logo-full.png";
-import { EventDetails } from "../components/eventDetails";
 import { SidebarCreateEvents } from "../components/sidebar";
 
 export const CreateEvents = () => {
@@ -15,7 +14,6 @@ export const CreateEvents = () => {
       </div>
       <div className="flex">
         <SidebarCreateEvents />
-        <EventDetails />
       </div>
     </>
   );

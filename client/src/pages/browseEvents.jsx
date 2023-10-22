@@ -1,17 +1,41 @@
 import { Navbar } from "../components/navbar";
 import Datepicker from "flowbite-datepicker/Datepicker";
 
+import iconFood from "../assets/streetfood.png";
+import iconMusic from "../assets/icons-music.svg";
+import iconWorkshop from "../assets/icons-workshop.png";
+import iconTheatre from "../assets/icons-theatre.png";
+import iconBusiness from "../assets/icons-business.png";
+import iconHealth from "../assets/icons-health.png";
+import iconExhibition from "../assets/icons-exhibition.png";
+import iconCompetition from "../assets/icons-competitions.png";
+import iconSocial from "../assets/icons-social.png";
+import { EventListBE } from "../components/eventListBE";
+
 export const BrowseEvents = () => {
+  const categoriesItems = [
+    { icon: iconMusic, name: "Concert" },
+    { icon: iconTheatre, name: "Shows" },
+    { icon: iconFood, name: "Festival" },
+    { icon: iconSocial, name: "Social" },
+    { icon: iconWorkshop, name: "Workshop" },
+    { icon: iconHealth, name: "Talk Show" },
+    { icon: iconBusiness, name: "Conference" },
+    { icon: iconExhibition, name: "Exhibition" },
+    { icon: iconCompetition, name: "Competition" },
+  ];
+
   return (
-    <section className="mt-[9vh]">
+    <section className="mt-[7vh]">
       <Navbar />
-      <div className="px-[5vw]">
+      {/* Filter Section */}
+      <div className="px-[10vw]">
         <h1 className="pt-12 text-[2rem] font-semibold">
           Browse
           <span className="underline-green"> Events</span>
         </h1>
         {/* Inputs Divs */}
-        <div className="flex items-center space-x-3 py-8 ">
+        <div className="flex items-center space-x-3 pb-1 pt-8">
           {/* Search input */}
           <form class="flex w-[17rem] items-center">
             <label for="voice-search" class="sr-only">
@@ -20,7 +44,7 @@ export const BrowseEvents = () => {
             <div class="relative w-full">
               <input
                 type="text"
-                class="block w-full rounded-lg border border-gray-300 p-2.5 pl-4 text-sm text-gray-900 focus:border-accent-grey-1 focus:ring-0"
+                class="block w-full rounded-lg border border-gray-300 p-2.5 pl-4 text-sm text-gray-900 focus:border-accent-green-1 focus:ring-0"
                 placeholder="Search a Location"
                 required
               />
@@ -51,7 +75,7 @@ export const BrowseEvents = () => {
             <input
               datepicker
               type="text"
-              class="block w-full rounded-lg border border-gray-300 p-2.5 pl-4 text-sm text-gray-900 focus:border-accent-grey-1 focus:ring-0"
+              class="block w-full rounded-lg border border-gray-300 p-2.5 pl-4 text-sm text-gray-900 focus:border-accent-green-1 focus:ring-0"
               placeholder="Select date"
             />
             <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3.5">
@@ -69,7 +93,7 @@ export const BrowseEvents = () => {
           {/* Ticket Type */}
           <select
             id="countries"
-            class="block rounded-lg border border-gray-300  p-2.5 pl-4 text-sm text-[#6B7280] focus:border-accent-grey-1 focus:ring-0"
+            class="block rounded-lg border border-gray-300  p-2.5 pl-4 text-sm text-[#6B7280] focus:border-accent-green-1 focus:ring-0"
           >
             <option selected>Select ticket type</option>
             <option value="free" className="my-3">
@@ -80,7 +104,31 @@ export const BrowseEvents = () => {
           {/* End: Ticket Type */}
         </div>
         {/* End: Input Divs */}
+        {/* Categories */}
+        <div className="flex flex-col pb-2">
+          {/* <h2 className="text-lg font-medium text-gray-600">Categories</h2> */}
+          <div className="carousel carousel-center rounded-box flex space-x-2 py-4">
+            {categoriesItems.map((item) => (
+              <div className="carousel-item flex flex-col items-center">
+                <div className="flex min-w-min flex-col items-center justify-center rounded-xl border border-gray-300 px-4 py-3.5 hover:border-accent-green-1 hover:bg-accent-green-1 hover:bg-opacity-10">
+                  <img
+                    src={item.icon}
+                    className="h-6 opacity-50 hover:fill-black"
+                    alt=""
+                  />
+                  <h3 className="mt-2 text-[13px] text-gray-500">
+                    {item.name}
+                  </h3>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
+      {/* End: Filter Section */}
+      {/* Event List - BE */}
+      <EventListBE />
+      {/* End: Event List - BE */}
     </section>
   );
 };
