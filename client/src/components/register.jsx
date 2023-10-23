@@ -7,6 +7,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
+
 const RegisterSchema = Yup.object().shape({
   email: Yup.string()
     .required("Email is required")
@@ -41,12 +42,14 @@ export function Register() {
     <>
       <div className=" flex min-h-screen flex-col items-center bg-bg-gradient to-white  bg-cover bg-center sm:justify-center sm:pt-0 lg:h-screen lg:bg-none">
         <div className="mt-7 flex items-center gap-3 sm:-mt-12 lg:absolute lg:right-80 lg:top-0 lg:mr-5 lg:mt-10 ">
+
           <img
             className="w-12 pt-10 md:w-10 lg:w-10"
             src={imgLogo}
             alt="logo"
           />
           <h1 className="title-landing mt-10 text-2xl font-bold text-zinc-900 md:text-4xl">
+
             FESTIHUB
           </h1>
         </div>
@@ -59,6 +62,7 @@ export function Register() {
           <div className="md:px-19 m-auto mt-10 overflow-hidden rounded-2xl bg-white px-6 py-4 shadow-2xl sm:max-w-md sm:rounded-2xl lg:relative lg:col-span-1 lg:-mr-0 lg:mt-48 lg:bg-none lg:shadow-none">
             <header>
               <h1 className="title-head flex justify-center text-xl font-semibold md:text-2xl lg:justify-start">
+
                 Buat akun FestiHub kamu
               </h1>
               <div className="mt-4 flex justify-center text-[#393E46] md:text-lg lg:justify-start">
@@ -98,6 +102,7 @@ export function Register() {
                           name="email"
                           className="mr-16 ring-0 ring-offset-0 focus:ring-0 md:mr-72"
                           // className="mr-16 mt-1 block rounded-md border border-gray-400 py-5 pl-4 shadow-sm focus:ring-0 focus:ring-offset-0 focus:ring-offset-white md:-ml-1 md:mr-72"
+
                         />
                         <ErrorMessage
                           name="email"
@@ -152,6 +157,7 @@ export function Register() {
                             </svg>
                           )}
                         </button>
+
                         <ErrorMessage
                           name="password"
                           component={"div"}
@@ -165,6 +171,7 @@ export function Register() {
                         className="w-full transform rounded-sm bg-[#4ECCA3] px-4 py-2 tracking-wide text-white transition-colors duration-500 hover:bg-green-600 focus:outline-none md:w-full md:text-lg"
                       >
                         Register
+
                       </button>
                     </div>
                   </Form>
@@ -183,6 +190,7 @@ export function Register() {
                 aria-label="Login with Google"
                 type="button"
                 className="flex w-full items-center justify-center space-x-4 rounded-sm border p-2 duration-500 hover:bg-gray-200 focus:ring-0 focus:ring-gray-400 focus:ring-offset-0 dark:border-gray-400"
+
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

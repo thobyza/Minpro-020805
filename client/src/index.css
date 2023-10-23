@@ -5,14 +5,9 @@
 
 /* Font */
 @import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700,800&display=swap");
-
 @import url("https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Oswald:wght@500;700&display=swap");
-
 @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap");
 
-/* font-family: 'Anton', sans-serif;
-font-family: 'Bebas Neue', sans-serif;
-font-family: 'Oswald', sans-serif; */
 
 /* Elements */
 html {
@@ -47,6 +42,7 @@ ion-icon {
   font-family: "Anton", sans-serif;
   /* font-family: 'Bebas Neue', sans-serif; */
   /* font-family: 'Oswald', sans-serif; */
+
   line-height: 120%;
 }
 
@@ -55,4 +51,54 @@ ion-icon {
   letter-spacing: -1px;
   word-spacing: 5px;
   line-height: 100%;
+}
+
+
+/* Event Card List */
+.card-slideshow::after {
+  content: "";
+  flex: 0 0 2rem;
+}
+
+.card-slideshow::-webkit-scrollbar {
+  display: none;
+}
+
+@layer utilities {
+  @variants responsive {
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* Hide scrollbar for IE, Edge and Firefox */
+    .no-scrollbar {
+      -ms-overflow-style: none; /* IE and Edge */
+      scrollbar-width: none; /* Firefox */
+    }
+  }
+}
+
+.underline-yellow {
+  background-color: transparent;
+  background-image: url("https://assets-global.website-files.com/61cee5eb4d566d3471eca114/61d2f2e602a2a8b328d55188_underline%205.svg");
+  background-position: 50% 100%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-attachment: scroll;
+  position: relative;
+  padding-bottom: 7px;
+  margin-bottom: -7px;
+}
+
+.underline-green {
+  background-color: transparent;
+  background-image: url("./assets/underline-green.svg");
+  background-position: 50% 100%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-attachment: scroll;
+  position: relative;
+  padding-bottom: 6px;
+  margin-bottom: -6px;
 }
