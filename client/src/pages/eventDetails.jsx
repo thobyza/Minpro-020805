@@ -60,7 +60,7 @@ export const EventDetails = () => {
               <h3 className="mt-3 text-[1.5rem] font-semibold">
                 Terms & Conditions
               </h3>
-              <p className="mt-3.5">
+              <p className="mt-3.5 text-[0.9rem]">
                 OMO! Market, sebuah festival yang tidak hanya memanjakan para
                 pecinta K-Pop, tetapi juga merangkul semangat budaya pop Korea
                 dalam sebuah pengalaman yang unik dan mendalam. Tanggal 11-12
