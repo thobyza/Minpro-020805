@@ -14,7 +14,7 @@ export const Navbar = () => {
 
   return (
     <div className="fixed left-0 top-0 w-full shadow-md">
-      <div className="md:flex items-center justify-between bg-white px-6 py-5 md:flex md:px-10 md:py-3">
+      <div className="items-center justify-between bg-white px-6 py-5 md:flex md:flex md:px-10 md:py-3">
         {/* Logo */}
         <div
           className="flex cursor-pointer items-center font-[Poppins] text-2xl font-bold 
@@ -23,11 +23,12 @@ export const Navbar = () => {
           <img src={appLogo} alt="" className="h-10" />
         </div>
         {/* Search bar */}
-        <div className="flex-1 px-[8vw] hidden md:flex">
-          <input 
-            type="search" 
-            id="default-search" 
-            class="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-3xl bg-gray-50 focus:ring-blue-500 focus:border-blue-500s focus:outline-none" placeholder="Search events..."
+        <div className="hidden flex-1 px-[8vw] md:flex">
+          <input
+            type="search"
+            id="default-search"
+            class="focus:border-blue-500s block w-full rounded-3xl border border-gray-300 bg-gray-50 p-2 pl-10 text-sm text-gray-900 focus:outline-none focus:ring-blue-500"
+            placeholder="Search events..."
           />
           <ion-icon name="search-outline"></ion-icon>
         </div>
@@ -40,8 +41,10 @@ export const Navbar = () => {
         </div>
 
         <ul
-          className={`absolute left-0 z-[-1] mt-2 flex w-full flex-col bg-white pb-7 pl-6 transition-all duration-500 ease-in md:static md:z-auto md:mt-0 md:flex md:w-auto md:flex-row md:items-center md:pb-0 md:pl-0 ${
-            open ? "top-19 " : "top-[-490px]"
+          className={`absolute right-0 z-[-1] mt-2 flex w-1/2 flex-col bg-white pb-7 pl-6 transition-all duration-500 ease-in md:static md:z-auto md:mt-0 md:flex md:w-auto md:flex-row md:items-center md:pb-0 md:pl-0 ${
+            open
+              ? "top-19 translate-x-0 "
+              : "top-[-490px] translate-x-full lg:translate-x-0"
           }`}
         >
           {Links.map((link) => (

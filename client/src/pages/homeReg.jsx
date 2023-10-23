@@ -2,12 +2,12 @@ import { BottomMenu } from "../components/bottomMenu";
 import { Categories } from "../components/categories";
 import LandingSection from "../components/landingSection";
 
-import { Navbar } from "../components/navbar";
+import { NavReg } from "../components/navreg";
 
-export const HomePage = () => {
+export const HomeReg = () => {
   return (
     <>
-      <Navbar />
+        <NavReg />
       <LandingSection />
         <Categories />
       <BottomMenu />

@@ -4,15 +4,15 @@
 @tailwind utilities;
 
 /* Font */
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700,800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700,800&display=swap");
 
+@import url("https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Oswald:wght@500;700&display=swap");
 
-@import url('https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Oswald:wght@500;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap");
 
 /* font-family: 'Anton', sans-serif;
 font-family: 'Bebas Neue', sans-serif;
 font-family: 'Oswald', sans-serif; */
-
 
 /* Elements */
 html {
@@ -39,17 +39,20 @@ ion-icon {
   /* background-repeat: no-repeat; */
 }
 
+.title-head {
+  font-family: "Oswald", sans-serif;
+}
+
 .title-landing-sm {
-  font-family: 'Anton', sans-serif;
+  font-family: "Anton", sans-serif;
   /* font-family: 'Bebas Neue', sans-serif; */
   /* font-family: 'Oswald', sans-serif; */
   line-height: 120%;
 }
 
 .title-landing {
-  font-family: 'Anton', sans-serif;
+  font-family: "Anton", sans-serif;
   letter-spacing: -1px;
   word-spacing: 5px;
   line-height: 100%;
 }
-
