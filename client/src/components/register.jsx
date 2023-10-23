@@ -90,7 +90,7 @@ export function Register() {
                           label="Email address"
                           type="email"
                           name="email"
-                          className="mr-16 mt-1 block rounded-md border border-gray-400 py-2 pl-2 shadow-sm md:-ml-1 md:mr-72"
+                          className="focus-ring-0 focus-ring-offset-1 mr-16 mt-1 block rounded-md border border-gray-400 py-2 pl-2 shadow-sm md:-ml-1 md:mr-72"
                         />
                         <ErrorMessage
                           name="email"

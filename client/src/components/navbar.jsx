@@ -1,6 +1,5 @@
 import { useState } from "react";
 import appLogo from "../assets/logo-full.png";
-import { ButtonNav } from "./buttonNav";
 import { Link } from "react-router-dom";
 
 export const Navbar = () => {
@@ -13,8 +12,8 @@ export const Navbar = () => {
   let [open, setOpen] = useState(false);
 
   return (
-    <div className="fixed left-0 top-0 w-full shadow-md">
-      <div className="md:flex items-center justify-between bg-white px-6 py-5 md:flex md:px-10 md:py-3">
+    <div className="fixed left-0 top-0 z-50 w-full shadow-md">
+      <div className="items-center justify-between bg-white py-5 md:flex md:flex md:px-[5vw] md:py-3">
         {/* Logo */}
         <div
           className="flex cursor-pointer items-center font-[Poppins] text-2xl font-bold 
@@ -23,11 +22,12 @@ export const Navbar = () => {
           <img src={appLogo} alt="" className="h-10" />
         </div>
         {/* Search bar */}
-        <div className="flex-1 px-[8vw] hidden md:flex">
-          <input 
-            type="search" 
-            id="default-search" 
-            class="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-3xl bg-gray-50 focus:ring-blue-500 focus:border-blue-500s focus:outline-none" placeholder="Search events..."
+        <div className="hidden flex-1 px-[8vw] md:flex">
+          <input
+            type="search"
+            id="default-search"
+            class="focus:border-blue-500s block w-full rounded-3xl border border-gray-300 bg-gray-50 p-2 pl-10 text-sm text-gray-900 focus:outline-none focus:ring-blue-500"
+            placeholder="Search events..."
           />
           <ion-icon name="search-outline"></ion-icon>
         </div>

@@ -18,15 +18,15 @@ module.exports = {
         "accent-green-1": "#4ECCA3",
         "accent-grey-1": "#393E46",
       },
+      fontFamily: {
+        'space-grotesk': ['Space Grotesk', 'sans-serif']
+      },
     },
   },
-  plugins: [require("tw-elements-react/dist/plugin.cjs")],
-  daisyui: {
-    themes: ["light"],
-  },
+
   plugins: [
-    require("daisyui"),
-    require('flowbite/plugin')
+    require('flowbite/plugin'),
+    require("tw-elements-react/dist/plugin.cjs")
   ],
 }
 
