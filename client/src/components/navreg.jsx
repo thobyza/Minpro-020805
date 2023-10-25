@@ -1,9 +1,7 @@
 import { useState } from "react";
 import appLogo from "../assets/logo-full.png";
 import userLogo from "../assets/user.png";
-import { ButtonNav } from "./buttonNav";
 import { Link } from "react-router-dom";
-import { button } from "@material-tailwind/react";
 
 export const NavReg = () => {
   let Links = [
