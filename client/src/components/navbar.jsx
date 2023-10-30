@@ -14,8 +14,8 @@ export const Navbar = () => {
   let [open, setOpen] = useState(false);
 
   return (
-    <div className="fixed left-0 top-0 w-full shadow-md">
-      <div className="items-center justify-between bg-white px-6 py-5 md:flex md:flex md:px-10 md:py-3">
+    <div className="fixed left-0 top-0 z-20 w-full shadow-md">
+      <div className="items-center justify-between bg-white px-6 py-5 md:flex md:px-10 md:py-3">
         {/* Logo */}
         <div
           className="flex cursor-pointer items-center font-[Poppins] text-2xl font-bold 
@@ -42,10 +42,10 @@ export const Navbar = () => {
         </div>
 
         <ul
-          className={`absolute right-0 z-[-1] mt-2 flex w-1/2 flex-col bg-white pb-7 pl-6 transition-all duration-500 ease-in md:static md:z-auto md:mt-0 md:flex md:w-auto md:flex-row md:items-center md:pb-0 md:pl-0 ${
+          className={`absolute right-0 z-[-1] mt-2 flex w-full flex-col bg-white pb-7 pl-6 transition-all duration-300 ease-in md:static md:z-auto md:mt-0 md:flex md:w-auto md:flex-row md:items-center md:pb-0 md:pl-0 ${
             open
-              ? "top-19 translate-x-0 "
-              : "top-[-490px] translate-x-full lg:translate-x-0"
+              ? "top-19 translate-y-0"
+              : " top-[-490px] -translate-y-full md:translate-y-0 lg:translate-y-0"
           }`}
         >
           {Links.map((link) => (

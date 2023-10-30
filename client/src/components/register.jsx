@@ -5,8 +5,9 @@ import { Formik, Form, ErrorMessage, Field } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
-
+import { setData } from "../redux/userSlice";
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 
 const RegisterSchema = Yup.object().shape({
   email: Yup.string()
@@ -15,6 +16,7 @@ const RegisterSchema = Yup.object().shape({
   password: Yup.string()
     .min(6, "Minimum 6 character")
     .required("Password is required"),
+  referralCode: Yup.string().min(6, "Minimum 6 character"),
 });
 
 const referralCode = () => {
@@ -23,33 +25,58 @@ const referralCode = () => {
 
 export function Register() {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
-
+  const [isReferralCode, setIsReferralCode] = useState(0);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const togglePassword = () => {
     setIsPasswordVisible((prevState) => !prevState);
   };
 
-  const navigate = useNavigate();
-
-  const handleSubmit = async (data) => {
+  const handleReferral = async (data) => {
     try {
-      await axios.post(`http://localhost:2000/users?`, data);
-      navigate("/home");
+      const response = await axios.get(
+        `http://localhost:2000/users?isReferralCode=${data.referral}`,
+      );
+      if (response.data[0]?.id) {
+        dispatch(setData(response.data[0]));
+        setIsReferralCode(1);
+        // localStorage.setItem("id", response.data[0]?.id);
+      }
     } catch (err) {
       console.log(err);
     }
   };
+
+  const handleSubmit = async (data) => {
+    if (isReferralCode) {
+      try {
+        await axios.post(`http://localhost:2000/users`, data);
+        navigate("/login");
+      } catch (err) {
+        console.log(err);
+      }
+    } else if (isReferralCode == "") {
+      try {
+        await axios.post(`http://localhost:2000/users`, data);
+        // navigate("/login");
+      } catch (err) {
+        console.log(err);
+      }
+    } else {
+      alert("Referral code is not valid");
+    }
+  };
+
   return (
     <>
       <div className=" flex min-h-screen flex-col items-center bg-bg-gradient to-white  bg-cover bg-center sm:justify-center sm:pt-0 lg:h-screen lg:bg-none">
-        <div className="mt-7 flex items-center gap-3 sm:-mt-12 lg:absolute lg:right-80 lg:top-0 lg:mr-5 lg:mt-10 ">
-
+        <div className="mt-7 flex items-center gap-3 sm:-mt-12 lg:absolute lg:top-0 lg:ml-[34.5%] lg:mt-10 ">
           <img
             className="w-12 pt-10 md:w-10 lg:w-10"
             src={imgLogo}
             alt="logo"
           />
           <h1 className="title-landing mt-10 text-2xl font-bold text-zinc-900 md:text-4xl">
-
             FESTIHUB
           </h1>
         </div>
@@ -62,7 +89,6 @@ export function Register() {
           <div className="md:px-19 m-auto mt-10 overflow-hidden rounded-2xl bg-white px-6 py-4 shadow-2xl sm:max-w-md sm:rounded-2xl lg:relative lg:col-span-1 lg:-mr-0 lg:mt-48 lg:bg-none lg:shadow-none">
             <header>
               <h1 className="title-head flex justify-center text-xl font-semibold md:text-2xl lg:justify-start">
-
                 Buat akun FestiHub kamu
               </h1>
               <div className="mt-4 flex justify-center text-[#393E46] md:text-lg lg:justify-start">
@@ -82,11 +108,13 @@ export function Register() {
                 email: "",
                 password: "",
                 referral: referralCode(),
+                // isReferralCode: "",
               }}
               validationSchema={RegisterSchema}
               onSubmit={(values, action) => {
                 console.log(values);
                 handleSubmit(values);
+                handleReferral(values);
                 action.resetForm();
               }}
             >
@@ -101,8 +129,6 @@ export function Register() {
                           type="email"
                           name="email"
                           className="mr-16 ring-0 ring-offset-0 focus:ring-0 md:mr-72"
-                          // className="mr-16 mt-1 block rounded-md border border-gray-400 py-5 pl-4 shadow-sm focus:ring-0 focus:ring-offset-0 focus:ring-offset-white md:-ml-1 md:mr-72"
-
                         />
                         <ErrorMessage
                           name="email"
@@ -120,10 +146,9 @@ export function Register() {
                           name="password"
                           autoComplete="off"
                           className="mr-16 mt-1 ring-0 ring-offset-0 focus:ring-0 md:mr-72"
-                          // className="mr-16 mt-1 block rounded-md border border-gray-400 py-2 pl-4 shadow-sm focus:ring-0 focus:ring-offset-0 md:-ml-1 md:mr-72"
                         />
-                        <button
-                          className="absolute right-0 top-0 mr-3 mt-3 flex items-center"
+                        <div
+                          className="absolute right-0 top-0 z-20 mr-3 mt-2 flex cursor-pointer items-center bg-white px-1 py-1 pl-5"
                           onClick={togglePassword}
                         >
                           {" "}
@@ -137,7 +162,7 @@ export function Register() {
                               <path
                                 fill="currentColor"
                                 fillRule="evenodd"
-                                d="M14.765 6.076a.5.5 0 01.159.689 9.519 9.519 0 01-1.554 1.898l1.201 1.201a.5.5 0 01-.707.707l-1.263-1.263a8.472 8.472 0 01-2.667 1.343l.449 1.677a.5.5 0 01-.966.258l-.458-1.709a8.666 8.666 0 01-2.918 0l-.458 1.71a.5.5 0 11-.966-.26l.45-1.676a8.473 8.473 0 01-2.668-1.343l-1.263 1.263a.5.5 0 01-.707-.707l1.2-1.201A9.521 9.521 0 01.077 6.765a.5.5 0 11.848-.53 8.425 8.425 0 001.77 2.034A7.462 7.462 0 007.5 9.999c2.808 0 5.156-1.493 6.576-3.764a.5.5 0 01.689-.159z"
+                                d="M7.5 11c-2.697 0-4.97-1.378-6.404-3.5C2.53 5.378 4.803 4 7.5 4s4.97 1.378 6.404 3.5C12.47 9.622 10.197 11 7.5 11zm0-8C4.308 3 1.656 4.706.076 7.235a.5.5 0 000 .53C1.656 10.294 4.308 12 7.5 12s5.844-1.706 7.424-4.235a.5.5 0 000-.53C13.344 4.706 10.692 3 7.5 3zm0 6.5a2 2 0 100-4 2 2 0 000 4z"
                                 clipRule="evenodd"
                               />
                             </svg>
@@ -151,13 +176,12 @@ export function Register() {
                               <path
                                 fill="currentColor"
                                 fillRule="evenodd"
-                                d="M7.5 11c-2.697 0-4.97-1.378-6.404-3.5C2.53 5.378 4.803 4 7.5 4s4.97 1.378 6.404 3.5C12.47 9.622 10.197 11 7.5 11zm0-8C4.308 3 1.656 4.706.076 7.235a.5.5 0 000 .53C1.656 10.294 4.308 12 7.5 12s5.844-1.706 7.424-4.235a.5.5 0 000-.53C13.344 4.706 10.692 3 7.5 3zm0 6.5a2 2 0 100-4 2 2 0 000 4z"
+                                d="M14.765 6.076a.5.5 0 01.159.689 9.519 9.519 0 01-1.554 1.898l1.201 1.201a.5.5 0 01-.707.707l-1.263-1.263a8.472 8.472 0 01-2.667 1.343l.449 1.677a.5.5 0 01-.966.258l-.458-1.709a8.666 8.666 0 01-2.918 0l-.458 1.71a.5.5 0 11-.966-.26l.45-1.676a8.473 8.473 0 01-2.668-1.343l-1.263 1.263a.5.5 0 01-.707-.707l1.2-1.201A9.521 9.521 0 01.077 6.765a.5.5 0 11.848-.53 8.425 8.425 0 001.77 2.034A7.462 7.462 0 007.5 9.999c2.808 0 5.156-1.493 6.576-3.764a.5.5 0 01.689-.159z"
                                 clipRule="evenodd"
                               />
                             </svg>
                           )}
-                        </button>
-
+                        </div>
                         <ErrorMessage
                           name="password"
                           component={"div"}
@@ -165,20 +189,30 @@ export function Register() {
                         />
                       </div>
                     </div>
+                    <div className="mt-4">
+                      <div className="flex flex-col items-start">
+                        <Field
+                          as={TEInput}
+                          label="Code Referral"
+                          type="IsReferralCode"
+                          name="IsReferralCode"
+                          className="mr-16 mt-1 ring-0 ring-offset-0 focus:ring-0 md:mr-72"
+                        />
+                      </div>
+                    </div>
                     <div className="mt-4 flex items-center">
                       <button
                         type="submit"
-                        className="w-full transform rounded-sm bg-[#4ECCA3] px-4 py-2 tracking-wide text-white transition-colors duration-500 hover:bg-green-600 focus:outline-none md:w-full md:text-lg"
+                        className=" w-full transform rounded-sm bg-[#4ECCA3] px-4 py-2 tracking-wide text-white transition-colors duration-500 hover:bg-green-600 focus:outline-none md:w-full md:text-lg"
                       >
                         Register
-
                       </button>
                     </div>
                   </Form>
                 );
               }}
             </Formik>
-            <div className="my-4 flex w-full items-center">
+            {/* <div className="my-4 flex w-full items-center">
               <span className="h-0.5 w-full bg-[#bbbbbb]" />
               <p className="rounded-xl border border-[#bbbbbb] px-3 text-[#393E46]">
                 OR
@@ -190,7 +224,6 @@ export function Register() {
                 aria-label="Login with Google"
                 type="button"
                 className="flex w-full items-center justify-center space-x-4 rounded-sm border p-2 duration-500 hover:bg-gray-200 focus:ring-0 focus:ring-gray-400 focus:ring-offset-0 dark:border-gray-400"
-
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -201,7 +234,7 @@ export function Register() {
                 </svg>
                 <p className="text-[#393E46] md:text-lg">Login with Google</p>
               </button>
-            </div>
+            </div> */}
           </div>
         </section>
       </div>

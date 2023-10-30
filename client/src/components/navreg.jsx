@@ -1,11 +1,19 @@
 import { useState } from "react";
 import appLogo from "../assets/logo-full.png";
 import userLogo from "../assets/user.png";
-// import { ButtonNav } from "./buttonNav";
-import { Link } from "react-router-dom";
-// import { button } from "@material-tailwind/react";
+import { Link, Navigate, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 export const NavReg = () => {
+  const navigate = useNavigate();
+
+  const profile = useSelector((state) => state.user.value);
+  const handleLogout = () => {
+    localStorage.removeItem("id");
+    navigate("/");
+    window.location.reload();
+  };
+
   let Links = [
     { name: "Home", link: "/" },
     { name: "Create Events", link: "/" },
@@ -13,11 +21,6 @@ export const NavReg = () => {
   ];
 
   let [open, setOpen] = useState(false);
-  let [drop, setDrop] = useState(false);
-
-  const toggleProfile = () => {
-    setDrop((prevState) => !prevState);
-  };
 
   return (
     <div className="fixed left-0 top-0 z-20 w-full shadow-md">
@@ -66,7 +69,7 @@ export const NavReg = () => {
             {Links.map((link) => (
               <li
                 key={link.name}
-                className="relative my-5 text-gray-700 md:my-0 md:ml-8 lg:mr-8"
+                className="relative my-5 text-gray-700 md:my-2 md:ml-8 lg:mr-8"
               >
                 <a
                   href={link.link}
@@ -76,50 +79,50 @@ export const NavReg = () => {
                 </a>
               </li>
             ))}
-            <button
-              className="relative ml-4 mt-5 h-7 w-7 rounded-full md:mt-0 lg:ml-5"
-              onClick={toggleProfile}
+            <img
+              id="avatarButton"
+              type="button"
+              data-dropdown-toggle="userDropdown"
+              data-dropdown-placement="bottom-start"
+              class="relative mt-1.5 h-8 w-8 cursor-pointer rounded-full"
+              src={userLogo}
+              alt="User dropdown"
+            />
+            <div
+              id="userDropdown"
+              className="z-10 hidden w-44 rounded-lg md:divide-y md:divide-gray-100 md:bg-white md:shadow"
             >
-              <img
-                class=" relative mr-10 h-7 w-7 cursor-pointer"
-                src={userLogo}
-                alt="User dropdown"
-              />
-              {drop ? (
-                <div class="absolute -left-10 top-96 mt-16 flex w-44 -translate-y-96 flex-col transition-all duration-1000 ease-in-out dark:divide-gray-600 md:absolute md:left-60 md:top-11 md:-ml-1 md:-mt-0 md:flex md:-translate-x-96 md:-translate-y-0 md:flex-col md:divide-y md:divide-gray-100 md:border-t-4 md:border-t-accent-green-1 md:bg-white">
-                  <div class="px-4 py-4 text-sm text-gray-700 duration-500 hover:text-accent-green-1 dark:text-white md:hover:text-gray-700 lg:py-3">
-                    <div>name@FestiHub.com</div>
-                  </div>
-                  <ul
-                    class="flex py-1 text-sm md:flex md:flex-col md:py-0"
-                    aria-labelledby="avatarButton"
-                  >
-                    <li>
-                      <div class="ml-1 py-1 md:ml-0 md:hover:bg-gray-100 md:dark:hover:bg-gray-600">
-                        <a
-                          href="#"
-                          class="block px-4 py-2 text-sm text-gray-700 duration-500 hover:text-accent-green-1 md:hover:text-gray-700"
-                        >
-                          F35T1H
-                        </a>
-                      </div>
-                    </li>
-                    <li>
-                      <div class=" py-1 md:ml-0 md:flex md:justify-center md:hover:bg-gray-100 md:dark:hover:bg-gray-600">
-                        <a
-                          href="#"
-                          class="block w-20 py-2  text-sm text-gray-700 duration-500 hover:text-accent-green-1 md:flex md:justify-center md:hover:text-gray-700"
-                        >
-                          Sign Out
-                        </a>
-                      </div>
-                    </li>
-                  </ul>
+              <div class="text-sm text-gray-900 md:px-4">
+                <div class="-mx-4 cursor-pointer truncate py-2 pl-4 font-medium md:hover:rounded-t-lg md:hover:bg-gray-100">
+                  Switch to Account <br />{" "}
+                  <span className="text-accent-green-1">Organizer</span>
                 </div>
-              ) : (
-                <div></div>
-              )}
-            </button>
+              </div>
+              <ul class="text-sm text-gray-700" aria-labelledby="avatarButton">
+                <li>
+                  <a href="#" class="block py-2 md:px-4 md:hover:bg-gray-100">
+                    {profile.referral}
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/contact-info"
+                    class="block py-2 md:px-4 md:hover:bg-gray-100"
+                  >
+                    Settings
+                  </a>
+                </li>
+              </ul>
+              <div>
+                <a
+                  type="button"
+                  onClick={handleLogout}
+                  class="hover:bg-gray-100dark:hover:text-white block cursor-pointer py-2 text-sm text-red-800 md:rounded-b-lg md:px-4 md:hover:bg-gray-100"
+                >
+                  Sign out
+                </a>
+              </div>
+            </div>
           </container>
         </ul>
       </div>
