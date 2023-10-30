@@ -3,6 +3,7 @@ import { Navbar } from "../components/navbar";
 import dummyBanner from "../assets/omo-market.jpg";
 import dummyAva from "../assets/omo-market-ava.jpg";
 import { TicketBar } from "../components/ticketBar";
+import { TicketSection } from "../components/ticketSection";
 
 export const EventDetails = () => {
   const eventTicketItems = [
@@ -15,7 +16,7 @@ export const EventDetails = () => {
     <>
       <Navbar />
       <section className="bg-[#F5F5F5] px-[13vw] pb-20">
-        <div className="flex space-x-3 pt-[16vh]">
+        <div className="flex flex-col space-x-3 pt-[16vh] md:flex-row">
           {/* Left side */}
           <div className="mr-5 flex flex-col space-y-4">
             <div className="flex w-[24rem]">
@@ -97,55 +98,7 @@ export const EventDetails = () => {
               </div>
             </div>
             {/*  */}
-            <div className="space-y-4 rounded-lg bg-white px-10 pb-8 pt-7">
-              <h3 className="text-[1.5rem] font-bold">Tickets</h3>
-              <div className="space-y-3">
-                {/* Tickets mapping */}
-                {/* {eventTicketItems.map((item) => ( */}
-                <div className="flex items-center justify-between rounded-lg border-[1px] border-solid border-[#E7E7E7] px-8 py-6 transition duration-300 ease-in-out">
-                  <div className="flex-1">
-                    <h3 className="text-[1rem] font-semibold">
-                      General Admission
-                    </h3>
-                    <p className="text-[0.9rem] text-[#797979]">lorem lorem</p>
-                  </div>
-                  <h3 className="mr-14 text-[1.2rem] font-semibold">
-                    Rp 80.000
-                  </h3>
-                  <div className="flex w-[6.5rem] items-center justify-center">
-                    <button className="flex h-[1.8rem] w-[1.8rem] items-center justify-center rounded-md bg-[#EEEDF2] text-[1.2rem] text-[#A9A8B3] transition duration-300 ease-in-out hover:bg-accent-green-1 hover:text-white">
-                      <span>-</span>
-                    </button>
-                    <div className="mx-1 h-[2rem] w-[2rem] text-center align-middle text-[1.2rem] font-semibold">
-                      0
-                    </div>
-                    <button className="flex h-[1.8rem] w-[1.8rem] items-center justify-center rounded-md bg-[#EEEDF2] text-[1.2rem] text-[#A9A8B3] transition duration-300 ease-in-out hover:bg-accent-green-1 hover:text-white">
-                      <span>+</span>
-                    </button>
-                  </div>
-                </div>
-                {/* --- */}
-                <div className="flex items-center justify-between rounded-lg border-[1px] border-solid border-[#E7E7E7] px-8 py-6">
-                  <div className="flex-1">
-                    <h3 className="text-[1rem] font-semibold text-[#7F7F7F]">
-                      VIP Access
-                    </h3>
-                    <p className="text-[0.9rem] text-[#BFBFBF]">lorem lorem</p>
-                  </div>
-                  <h3 className="mr-14 text-[1.2rem] font-semibold text-[#7F7F7F]">
-                    Rp 200.000
-                  </h3>
-                  <div className="flex w-[6.5rem] items-center justify-center">
-                    <div className="flex items-center justify-center rounded-lg bg-red-100 px-3.5 py-2">
-                      <span className="text-[0.8rem] font-semibold text-red-400">
-                        SOLD OUT
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                {/* ))} */}
-              </div>
-            </div>
+            <TicketSection />
             {/*  */}
           </div>
         </div>

@@ -1,20 +1,17 @@
-import appLogo from "../assets/logo-full.png";
-import { SidebarCreateEvents } from "../components/sidebar";
+import { Navbar } from "../components/navbar";
+import { CreateEventsAbout } from "../components/create-events/createEventsAbout";
+import { CreateEventsInfo } from "../components/create-events/createEventsInfo";
+import { CreateEventsTickets } from "../components/create-events/createEventsTickets";
 
 export const CreateEvents = () => {
   return (
-    <>
-      <div className="flex justify-between border-b px-8 py-3">
-        <img src={appLogo} alt="" className="h-10" />
-        <img
-          class="h-10 w-10 rounded-full p-1 ring-2 ring-gray-300 dark:ring-gray-500"
-          src="/docs/images/people/profile-picture-5.jpg"
-          alt="Bordered avatar"
-        />
+    <section className="h-[500vh] min-h-screen bg-[#F5F5F5]">
+      <Navbar />
+      <div className="flex h-screen flex-col space-y-6 px-[22vw] pt-[12vh]">
+        <CreateEventsInfo />
+        <CreateEventsAbout />
+        <CreateEventsTickets />
       </div>
-      <div className="flex">
-        <SidebarCreateEvents />
-      </div>
-    </>
+    </section>
   );
 };

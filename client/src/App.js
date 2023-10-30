@@ -5,7 +5,6 @@ import { LoginPage } from "./pages/loginPage";
 import { RegisterPage } from "./pages/registerPage";
 import { BrowseEvents } from "./pages/browseEvents";
 import { EventDetails } from "./pages/eventDetails";
-
 import { HomeReg } from "./pages/homeReg";
 
 const router = createBrowserRouter([
@@ -13,7 +12,7 @@ const router = createBrowserRouter([
   { path: "/home", element: <HomeReg /> },
   { path: "/login", element: <LoginPage /> },
   { path: "/register", element: <RegisterPage /> },
-    { path: "/create-events", element: <CreateEvents /> },
+  { path: "/create-events", element: <CreateEvents /> },
   { path: "/browse-events", element: <BrowseEvents /> },
   { path: "/event-details", element: <EventDetails /> }
 ]);
