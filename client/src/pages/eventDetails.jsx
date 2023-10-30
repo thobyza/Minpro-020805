@@ -100,6 +100,7 @@ export const EventDetails = () => {
             {/*  */}
             <TicketSection />
             {/*  */}
+
           </div>
         </div>
       </section>

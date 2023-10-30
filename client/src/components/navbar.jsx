@@ -1,5 +1,6 @@
 import { useState } from "react";
 import appLogo from "../assets/logo-full.png";
+
 import { Link } from "react-router-dom";
 
 export const Navbar = () => {
@@ -14,7 +15,6 @@ export const Navbar = () => {
   return (
     <div className="fixed left-0 top-0 w-full shadow-md">
       <div className="items-center justify-between bg-white px-6 py-5 md:flex md:flex md:px-10 md:py-3">
-
         {/* Logo */}
         <div
           className="flex cursor-pointer items-center font-[Poppins] text-2xl font-bold 
