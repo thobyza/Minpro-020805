@@ -1,17 +1,19 @@
 export const CreateEventsAbout = () => {
   return (
-    <div className="flex flex-col space-y-8 rounded-lg bg-white px-14 py-9">
+    <div className="flex flex-col space-y-8 rounded-lg bg-white px-6 py-9 lg:px-14">
       {/*  */}
       <div className="space-y-3.5">
         <div className="space-y-2">
-          <h3 className="text-[2rem] font-bold">Description & Image</h3>
-          <p className="pr-[16rem] text-[0.9rem] text-gray-600">
+          <h3 className="text-[1.65rem] font-bold lg:text-[2rem]">
+            Description & Image
+          </h3>
+          <p className="text-[0.9rem] text-gray-600 lg:pr-[10rem]">
             Add more details to your event such as description and event's image
             to let attendees know more about your upcoming events.
           </p>
         </div>
         {/* Event description */}
-        <h4 className="text-[1.2rem] font-semibold">Event Description</h4>
+        <h4 className="pt-3 text-[1.2rem] font-semibold">Event Description</h4>
         <div className="pt-1">
           <label
             for="Username"

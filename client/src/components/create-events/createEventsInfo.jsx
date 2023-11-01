@@ -20,16 +20,15 @@ export const CreateEventsInfo = () => {
   ];
 
   return (
-    <div className="flex flex-col space-y-8 rounded-lg bg-white px-14 py-9">
+    <div className="flex flex-col space-y-8 rounded-lg bg-white px-6 py-9 lg:px-14">
       <div className="space-y-2">
-        <h3 className="text-[2rem] font-bold">Basic Info</h3>
+        <h3 className="text-[1.65rem] font-bold lg:text-[2rem]">Basic Info</h3>
 
-        <p className="text-[0.9rem] text-gray-600">
-          Name your event and explain why event-goers should attend.
-          <br />
-          Add details and emphasize what makes it unique.
+        <p className="text-[0.9rem] text-gray-600 md:pr-[8rem]">
+          Name your event and explain why event-goers should attend. Add details
+          and emphasize what makes it unique.
         </p>
-        <div className="space-y-3 pt-2">
+        <div className="space-y-3 pt-4">
           {/* Event title input */}
           <label
             for="Username"
@@ -49,7 +48,7 @@ export const CreateEventsInfo = () => {
           {/* Dropdown category */}
           <Menu as="div" className="relative inline-block text-left">
             <div>
-              <Menu.Button className="inline-flex w-[10rem] justify-between gap-x-1.5 rounded-md border border-[#D4D4D5] bg-white px-4 py-2.5 text-sm font-medium text-gray-600 hover:bg-gray-50">
+              <Menu.Button className="flex w-[11rem] justify-between gap-x-1.5 rounded-md border border-[#D4D4D5] bg-white px-4 py-3 text-sm font-medium text-gray-600 hover:bg-gray-50 ">
                 Category
                 <ChevronDownIcon
                   className="-mr-1 h-5 w-5 text-gray-400"
@@ -96,11 +95,11 @@ export const CreateEventsInfo = () => {
       {/* Location */}
       <div className="space-y-3.5">
         <h4 className="text-[1.2rem] font-semibold">Location</h4>
-        <div className="flex space-x-3 pt-1">
+        <div className="flex flex-col space-y-3 pt-1 lg:flex-row lg:space-x-3 lg:space-y-0">
           {/* venue */}
           <label
             for="Username"
-            className="relative block w-[24.5rem] rounded-md border border-[#D4D4D5] focus-within:border-accent-green-1 focus-within:ring-1 focus-within:ring-accent-green-1"
+            className="relative block flex w-full rounded-md border border-[#D4D4D5] focus-within:border-accent-green-1 focus-within:ring-1 focus-within:ring-accent-green-1 lg:w-[24.5rem]"
           >
             <input
               type="text"
@@ -116,7 +115,7 @@ export const CreateEventsInfo = () => {
           {/* city */}
           <label
             for="Username"
-            className="relative block flex w-[13rem] rounded-md border border-[#D4D4D5] focus-within:border-accent-green-1 focus-within:ring-1 focus-within:ring-accent-green-1"
+            className="relative block flex w-full rounded-md border border-[#D4D4D5] focus-within:border-accent-green-1 focus-within:ring-1 focus-within:ring-accent-green-1 lg:w-[13rem]"
           >
             <input
               type="text"
@@ -156,69 +155,73 @@ export const CreateEventsInfo = () => {
       <div className="space-y-3.5">
         <h4 className="text-[1.2rem] font-semibold">Date & Time</h4>
         <div className="flex space-x-3 pt-2">
-          {/* Start Date */}
-          <label
-            for="Username"
-            className="relative block w-[12rem] rounded-md border border-[#D4D4D5] focus-within:border-accent-green-1 focus-within:ring-1 focus-within:ring-accent-green-1"
-          >
-            <input
-              type="date"
-              id="startDate"
-              className="peer w-full border-none bg-transparent px-4 py-3 placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0"
-            />
+          <div className="w-full space-y-5 md:flex md:space-x-3 md:space-y-0">
+            {/* Start Date */}
+            <label
+              for="Username"
+              className="relative block w-full flex-grow-0 rounded-md border border-[#D4D4D5] focus-within:border-accent-green-1 focus-within:ring-1 focus-within:ring-accent-green-1 lg:w-[12rem]"
+            >
+              <input
+                type="date"
+                id="startDate"
+                className="peer w-full border-none bg-transparent px-4 py-3 placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0"
+              />
 
-            <span className="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-white p-0.5 px-1.5 text-sm font-medium text-gray-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-0 peer-focus:text-xs">
-              Event Starts
-            </span>
-          </label>
-          {/* End Date */}
-          <label
-            for="Username"
-            className="relative block w-[12rem] rounded-md border border-[#D4D4D5] focus-within:border-accent-green-1 focus-within:ring-1 focus-within:ring-accent-green-1"
-          >
-            <input
-              type="date"
-              id="startDate"
-              className="peer w-full border-none bg-transparent px-4 py-3 placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0"
-            />
+              <span className="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-white p-0.5 px-1.5 text-sm font-medium text-gray-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-0 peer-focus:text-xs">
+                Event Starts
+              </span>
+            </label>
+            {/* End Date */}
+            <label
+              for="Username"
+              className="relative block w-full rounded-md border border-[#D4D4D5] focus-within:border-accent-green-1 focus-within:ring-1 focus-within:ring-accent-green-1 lg:w-[12rem]"
+            >
+              <input
+                type="date"
+                id="startDate"
+                className="peer w-full border-none bg-transparent px-4 py-3 placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0"
+              />
 
-            <span className="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-white p-0.5 px-1.5 text-sm font-medium text-gray-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-0 peer-focus:text-xs">
-              Event Ends
-            </span>
-          </label>
+              <span className="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-white p-0.5 px-1.5 text-sm font-medium text-gray-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-0 peer-focus:text-xs">
+                Event Ends
+              </span>
+            </label>
+          </div>
         </div>
         {/* time */}
         <div className="flex space-x-3 pt-2">
-          {/* Start Time */}
-          <label
-            for="Username"
-            className="relative block w-[12rem] rounded-md border border-[#D4D4D5] focus-within:border-accent-green-1 focus-within:ring-1 focus-within:ring-accent-green-1"
-          >
-            <input
-              type="time"
-              id="startDate"
-              className="peer  w-full border-none bg-transparent px-4 py-3 placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0"
-            />
+          <div className="w-full space-y-5 md:flex md:space-x-3 md:space-y-0">
+            {/* Start Time */}
+            <label
+              for="Username"
+              className="relative block w-full rounded-md border border-[#D4D4D5] focus-within:border-accent-green-1 focus-within:ring-1 focus-within:ring-accent-green-1 lg:w-[12rem]"
+            >
+              <input
+                type="time"
+                id="startDate"
+                className="peer w-full border-none bg-transparent px-4 py-3 placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0"
+              />
 
-            <span className="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-white p-0.5 px-1.5 text-sm font-medium text-gray-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-0 peer-focus:text-xs">
-              Start Time
-            </span>
-          </label>
-          {/* End Time */}
-          <label
-            for="Username"
-            className="relative block w-[12rem] rounded-md border border-[#D4D4D5] focus-within:border-accent-green-1 focus-within:ring-1 focus-within:ring-accent-green-1"
-          >
-            <input
-              type="time"
-              id="startDate"
-              className="peer w-full border-none bg-transparent px-4 py-3 placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0"
-            />
+              <span className="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-white p-0.5 px-1.5 text-sm font-medium text-gray-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-0 peer-focus:text-xs">
+                Start Time
+              </span>
+            </label>
+            {/* End Time */}
+            <label
+              for="Username"
+              className="relative block w-full rounded-md border border-[#D4D4D5] focus-within:border-accent-green-1 focus-within:ring-1 focus-within:ring-accent-green-1 lg:w-[12rem]"
+            >
+              <input
+                type="time"
+                id="startDate"
+                className="peer w-full border-none bg-transparent px-4 py-3 placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0"
+              />
 
-            <span className="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-white p-0.5 px-1.5 text-sm font-medium text-gray-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-0 peer-focus:text-xs">
-              End Time
-            </span>
-          </label>
+              <span className="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-white p-0.5 px-1.5 text-sm font-medium text-gray-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-0 peer-focus:text-xs">
+                End Time
+              </span>
+            </label>
+          </div>
         </div>
       </div>
     </div>

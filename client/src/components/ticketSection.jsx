@@ -1,4 +1,8 @@
+import { useState } from "react";
+
 export const TicketSection = () => {
+  const [count, setCount] = useState(0);
+
   return (
     <div className="space-y-4 rounded-lg bg-white px-10 pb-8 pt-7">
       <h3 className="text-[1.5rem] font-bold">Tickets</h3>
@@ -12,13 +16,20 @@ export const TicketSection = () => {
           </div>
           <h3 className="mr-14 text-[1.2rem] font-semibold">Rp 80.000</h3>
           <div className="flex w-[6.5rem] items-center justify-center">
-            <button className="flex h-[1.8rem] w-[1.8rem] items-center justify-center rounded-md bg-[#EEEDF2] text-[1.2rem] text-[#A9A8B3] transition duration-300 ease-in-out hover:bg-accent-green-1 hover:text-white">
+            <button
+              disabled={count < 1}
+              onClick={() => setCount(count - 1)}
+              className="flex h-[1.8rem] w-[1.8rem] items-center justify-center rounded-md bg-[#EEEDF2] text-[1.2rem] text-[#A9A8B3] transition duration-300 ease-in-out hover:bg-accent-green-1 hover:text-white"
+            >
               <span>-</span>
             </button>
             <div className="mx-1 h-[2rem] w-[2rem] text-center align-middle text-[1.2rem] font-semibold">
-              0
+              {count}
             </div>
-            <button className="flex h-[1.8rem] w-[1.8rem] items-center justify-center rounded-md bg-[#EEEDF2] text-[1.2rem] text-[#A9A8B3] transition duration-300 ease-in-out hover:bg-accent-green-1 hover:text-white">
+            <button
+              onClick={() => setCount(count + 1)}
+              className="flex h-[1.8rem] w-[1.8rem] items-center justify-center rounded-md bg-[#EEEDF2] text-[1.2rem] text-[#A9A8B3] transition duration-300 ease-in-out hover:bg-accent-green-1 hover:text-white"
+            >
               <span>+</span>
             </button>
           </div>

@@ -1,10 +1,8 @@
 import { useState, Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 
-import { IoTicketOutline } from "react-icons/io5";
 import { IoAddOutline } from "react-icons/io5";
-import { GrAdd } from "react-icons/gr";
-import { IoMdAdd } from "react-icons/io";
+import { IoTicketOutline } from "react-icons/io5";
 
 export const CreateEventsTickets = () => {
   let [isOpen, setIsOpen] = useState(false);
@@ -18,7 +16,7 @@ export const CreateEventsTickets = () => {
   }
 
   return (
-    <div className="flex flex-col space-y-8 rounded-lg bg-white px-14 py-9">
+    <div className="flex flex-col space-y-8 rounded-lg bg-white px-6 py-9 lg:px-14">
       <div className="space-y-5">
         <div className="space-y-2">
           <h3 className="text-[2rem] font-bold">Tickets</h3>
@@ -276,7 +274,10 @@ export const CreateEventsTickets = () => {
         <div className="space-y-4 pt-2">
           <h4 className="text-[1.2rem] font-semibold">Ticket List</h4>
           <div>
-            <div className="flex items-center justify-between rounded-lg border-[1px] border-solid border-[#E7E7E7] px-8 py-6 transition duration-300 ease-in-out">
+            <div className="flex items-center justify-between rounded-lg border-[1px] border-solid border-[#E7E7E7] px-5 py-6 transition duration-300 ease-in-out">
+              <div>
+                <IoTicketOutline className="ml-4 mr-7 text-[2rem] text-[#797979]" />
+              </div>
               <div className="flex-1">
                 <h3 className="text-[1rem] font-semibold">General Admission</h3>
                 <p className="text-[0.9rem] text-[#797979]">lorem lorem</p>
@@ -287,7 +288,9 @@ export const CreateEventsTickets = () => {
               </div>
               <div className="flex flex-col">
                 <span className="text-[0.9rem]">Quantity</span>
-                <h3 className="font-semold mr-14 text-[1.2rem]">200</h3>
+                <h3 className="font-semold mr-14 text-[1.2rem] font-semibold">
+                  200
+                </h3>
               </div>
             </div>
           </div>
