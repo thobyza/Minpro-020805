@@ -29,18 +29,18 @@ export const TopDestination = () => {
       </div>
 
       {/* Card */}
-      <div class="card-slideshow scrolling-touch flex-no-wrap no-scrollbar flex w-full space-x-6 overflow-x-auto pb-8">
+      <div className="card-slideshow scrolling-touch flex-no-wrap no-scrollbar flex w-full space-x-6 overflow-x-auto pb-8">
         {cardItems.map((item) => (
-          <div class="group card relative m-0 flex h-[16rem] w-[17rem] flex-none rounded-xl shadow-xl sm:mx-auto sm:max-w-lg md:w-[25rem]">
-            <div class="z-10 h-full w-full overflow-hidden rounded-xl opacity-80 transition duration-300 ease-in-out group-hover:opacity-100 ">
+          <div className="card group relative m-0 flex h-[16rem] w-[17rem] flex-none rounded-xl shadow-xl sm:mx-auto sm:max-w-lg md:w-[25rem]">
+            <div className="z-10 h-full w-full overflow-hidden rounded-xl opacity-80 transition duration-300 ease-in-out group-hover:opacity-100 ">
               <img
                 src={item.img}
-                class="animate-fade-in block h-full w-full scale-100 transform object-cover object-center opacity-100 transition duration-300 group-hover:scale-110"
+                className="animate-fade-in block h-full w-full scale-100 transform object-cover object-center opacity-100 transition duration-300 group-hover:scale-110"
                 alt=""
               />
             </div>
-            <div class="absolute bottom-0 z-20 m-0 pb-4 ps-4 transition duration-300 ease-in-out group-hover:-translate-y-1 group-hover:translate-x-3 group-hover:scale-110">
-              <h1 class="pb-1 pl-3 text-3xl font-bold text-white shadow-xl">
+            <div className="absolute bottom-0 z-20 m-0 pb-4 ps-4 transition duration-300 ease-in-out group-hover:-translate-y-1 group-hover:translate-x-3 group-hover:scale-110">
+              <h1 className="pb-1 pl-3 text-3xl font-bold text-white shadow-xl">
                 {item.place}
               </h1>
             </div>

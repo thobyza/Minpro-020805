@@ -2,39 +2,34 @@ import { Navbar } from "../components/navbar";
 
 import dummyBanner from "../assets/omo-market.jpg";
 import dummyAva from "../assets/omo-market-ava.jpg";
-import { TicketBar } from "../components/ticketBar";
-import { TicketSection } from "../components/ticketSection";
 
 export const EventDetails = () => {
-  const eventTicketItems = [
-    { name: "General Admission", desc: "lorem lorem", price: "80.000" },
-    { name: "General Admission 3 DAYS", desc: "lorem lorem", price: "150.000" },
-    { name: "VIP Access", desc: "lorem lorem", price: "200.000" },
-  ];
-
+  // bg-[#F5F5F5]
   return (
     <>
       <Navbar />
-      <section className="bg-[#F5F5F5] px-[13vw] pb-20">
-        <div className="flex flex-col space-x-3 pt-[16vh] md:flex-row">
+      <section className="bg-[#F5F5F5]">
+        <div className="lg:pt-[14vh ] flex flex-col space-y-4 pt-[12vh] lg:flex-row lg:space-x-3 lg:space-y-0 lg:px-[9vw]">
           {/* Left side */}
-          <div className="mr-5 flex flex-col space-y-4">
-            <div className="flex w-[24rem]">
+          <div className="flex flex-col space-y-4 px-[3.5vw] lg:px-[1vw]">
+            <div className="flex w-full lg:w-[24rem]">
               <img
                 src={dummyBanner}
                 alt=""
-                className="h-[20rem] rounded-lg object-cover"
+                className="h-[20rem] w-full rounded-lg object-cover"
               />
             </div>
-            <TicketBar />
+            <button className="w-full rounded-lg bg-accent-grey-1 py-3.5 text-white transition duration-300 ease-in-out hover:bg-accent-green-1">
+              Get Tickets
+            </button>
           </div>
 
           {/* Right side */}
-          <div className="flex-grow space-y-4">
+          <div className="flex-grow space-y-4 px-[3.5vw] pb-5 lg:px-[0vw]">
             {/*  */}
-            <div className="space-y-3 rounded-lg bg-white px-10 py-7">
+            <div className="space-y-3 rounded-lg bg-white px-7 py-8 md:px-12 md:py-9 lg:px-10 lg:py-7">
               <div>
-                <h1 className="mb-2 text-[38px] font-semibold">
+                <h1 className="mb-2 text-[1.5rem] font-semibold lg:text-[2.4rem]">
                   OMO! MARKET K-POP FESTIVAL
                 </h1>
               </div>
@@ -64,10 +59,10 @@ export const EventDetails = () => {
               </div>
             </div>
             {/*  */}
-            <div className="space-y-6 divide-y divide-[#E7E7E] rounded-lg bg-white px-10 py-7">
+            <div className="space-y-6 divide-y divide-[#E7E7E] rounded-lg bg-white px-7 py-7 md:px-12 md:py-9 lg:px-10">
               <div>
                 <h3 className="text-[1.5rem] font-semibold">About</h3>
-                <p className="mt-3.5 text-[0.9rem]">
+                <p className="mt-3.5 text-justify text-[0.9rem]">
                   OMO! Market, sebuah festival yang tidak hanya memanjakan para
                   pecinta K-Pop, tetapi juga merangkul semangat budaya pop Korea
                   dalam sebuah pengalaman yang unik dan mendalam. Tanggal 11-12
@@ -85,7 +80,7 @@ export const EventDetails = () => {
                 <h3 className="mt-3 text-[1.5rem] font-semibold">
                   Terms & Conditions
                 </h3>
-                <p className="mt-3.5 text-[0.9rem]">
+                <p className="mt-3.5 text-justify text-[0.9rem]">
                   Harga sudah termasuk pajak & admin fee. Tiket yang sudah
                   dibeli tidak dapat dikembalikan. Tiket yang sudah dibeli tidak
                   dapat diganti jadwalnya. Pembeli wajib mengisi data diri
@@ -97,10 +92,6 @@ export const EventDetails = () => {
                 </p>
               </div>
             </div>
-            {/*  */}
-            <TicketSection />
-            {/*  */}
-
           </div>
         </div>
       </section>

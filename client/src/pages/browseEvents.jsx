@@ -29,31 +29,31 @@ export const BrowseEvents = () => {
     <section className="mt-[7vh]">
       <Navbar />
       {/* Filter Section */}
-      <div className="px-[10vw]">
+      <div className="px-[5vw] lg:px-[10vw]">
         <h1 className="pt-12 text-[2rem] font-semibold">
           Browse
           <span className="underline-green"> Events</span>
         </h1>
         {/* Inputs Divs */}
-        <div className="flex items-center space-x-3 pb-1 pt-8">
+        <div className="flex flex-wrap items-center space-y-3 pb-1 pt-8 lg:flex-row lg:space-x-3 lg:space-y-0">
           {/* Search input */}
-          <form class="flex w-[17rem] items-center">
-            <label for="voice-search" class="sr-only">
+          <form className="flex w-full items-center lg:w-[17rem]">
+            <label for="voice-search" className="sr-only">
               Search
             </label>
-            <div class="relative w-full">
+            <div className="relative w-full">
               <input
                 type="text"
-                class="block w-full rounded-lg border border-gray-300 p-2.5 pl-4 text-sm text-gray-900 focus:border-accent-green-1 focus:ring-0"
+                className="block w-full rounded-lg border border-gray-300 p-2.5 pl-4 text-sm text-gray-900 focus:border-accent-green-1 focus:ring-0"
                 placeholder="Search a Location"
                 required
               />
               <button
                 type="button"
-                class="absolute inset-y-0 right-0 flex items-center pr-3"
+                className="absolute inset-y-0 right-0 flex items-center pr-3"
               >
                 <svg
-                  class="h-4 w-4 text-gray-500 hover:text-gray-900"
+                  className="h-4 w-4 text-gray-500 hover:text-gray-900"
                   aria-hidden="true"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -71,16 +71,16 @@ export const BrowseEvents = () => {
             </div>
           </form>
           {/* Date picker */}
-          <div class="relative">
+          <div className="relative w-full md:flex-1 lg:w-max lg:flex-none">
             <input
               datepicker
               type="text"
-              class="block w-full rounded-lg border border-gray-300 p-2.5 pl-4 text-sm text-gray-900 focus:border-accent-green-1 focus:ring-0"
+              className="block w-full rounded-lg border border-gray-300 p-2.5 pl-4 text-sm text-gray-900 focus:border-accent-green-1 focus:ring-0"
               placeholder="Select date"
             />
-            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3.5">
+            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3.5">
               <svg
-                class="h-4 w-4 text-gray-500"
+                className="h-4 w-4 text-gray-500"
                 aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="currentColor"
@@ -93,7 +93,7 @@ export const BrowseEvents = () => {
           {/* Ticket Type */}
           <select
             id="countries"
-            class="block rounded-lg border border-gray-300  p-2.5 pl-4 text-sm text-[#6B7280] focus:border-accent-green-1 focus:ring-0"
+            className="block w-full rounded-lg border border-gray-300 p-2.5 pl-4 text-sm text-[#6B7280] focus:border-accent-green-1 focus:ring-0 md:ml-3 md:flex-1 lg:w-max lg:flex-none"
           >
             <option selected>Select ticket type</option>
             <option value="free" className="my-3">
@@ -104,10 +104,19 @@ export const BrowseEvents = () => {
           {/* End: Ticket Type */}
         </div>
         {/* End: Input Divs */}
-        {/* Categories */}
-        <div className="flex flex-col pb-2">
-          {/* <h2 className="text-lg font-medium text-gray-600">Categories</h2> */}
-          <div className="carousel carousel-center rounded-box flex space-x-2 py-4">
+        {/* Categories Card */}
+        <div className="card-slideshow scrolling-touch flex-no-wrap no-scrollbar flex w-full space-x-2 overflow-x-auto py-4">
+          {categoriesItems.map((item) => (
+            <div className="card group relative m-0 flex">
+              <div className="flex min-w-min flex-col items-center justify-between overflow-hidden rounded-xl border border-gray-300 px-4 py-3.5 transition duration-300 ease-in-out hover:border-accent-green-1 hover:bg-accent-green-1 hover:bg-opacity-10">
+                <img src={item.icon} className="h-6 opacity-50" alt="" />
+                <h3 className="mt-0 text-[13px] text-gray-500 md:mt-2">
+                  {item.name}
+                </h3>
+              </div>
+            </div>
+          ))}
+          {/* <div className="carousel carousel-center rounded-box flex space-x-2 py-4">
             {categoriesItems.map((item) => (
               <div className="carousel-item flex flex-col items-center">
                 <div className="flex min-w-min flex-col items-center justify-center rounded-xl border border-gray-300 px-4 py-3.5 hover:border-accent-green-1 hover:bg-accent-green-1 hover:bg-opacity-10">
@@ -122,7 +131,7 @@ export const BrowseEvents = () => {
                 </div>
               </div>
             ))}
-          </div>
+          </div> */}
         </div>
       </div>
       {/* End: Filter Section */}

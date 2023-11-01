@@ -60,7 +60,7 @@ export const EventListBE = () => {
   ];
 
   return (
-    <section className="bg-[#F5F5F5] px-[10vw] pt-6">
+    <section className="bg-[#F5F5F5] px-[5vw] pt-6 lg:px-[10vw]">
       <div>
         <div className="flex items-center justify-between">
           <h1 className="text-[1.1rem] font-medium text-gray-500">Results</h1>
