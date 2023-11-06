@@ -16,10 +16,18 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Tickets.init({
-    ticket_name: DataTypes.STRING,
-    ticket_type: DataTypes.STRING,
-    ticket_price: DataTypes.INTEGER,
-    amount: DataTypes.INTEGER
+    ticket_name: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    ticket_quantity: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    ticket_price: {
+      type: DataTypes.INTEGER,
+      allowNull: true
+    },
   }, {
     sequelize,
     modelName: 'Tickets',

@@ -19,7 +19,7 @@ export const BrowseEvents = () => {
     { icon: iconFood, name: "Festival" },
     { icon: iconSocial, name: "Social" },
     { icon: iconWorkshop, name: "Workshop" },
-    { icon: iconHealth, name: "Talk Show" },
+    { icon: iconHealth, name: "Seminar" },
     { icon: iconBusiness, name: "Conference" },
     { icon: iconExhibition, name: "Exhibition" },
     { icon: iconCompetition, name: "Competition" },
@@ -30,12 +30,12 @@ export const BrowseEvents = () => {
       <Navbar />
       {/* Filter Section */}
       <div className="px-[5vw] lg:px-[10vw]">
-        <h1 className="pt-12 text-[2rem] font-semibold">
-          Browse
-          <span className="underline-green"> Events</span>
+        <h1 className="pt-9 text-[1.5rem] font-bold md:text-[1.8rem] lg:text-[2rem]">
+          Browse Events
+          {/* <span className="underline-green"> Events</span> */}
         </h1>
         {/* Inputs Divs */}
-        <div className="flex flex-wrap items-center space-y-3 pb-1 pt-8 lg:flex-row lg:space-x-3 lg:space-y-0">
+        <div className="flex flex-wrap items-center space-y-3 pb-1 pt-4 lg:flex-row lg:space-x-3 lg:space-y-0">
           {/* Search input */}
           <form className="flex w-full items-center lg:w-[17rem]">
             <label for="voice-search" className="sr-only">
@@ -116,22 +116,6 @@ export const BrowseEvents = () => {
               </div>
             </div>
           ))}
-          {/* <div className="carousel carousel-center rounded-box flex space-x-2 py-4">
-            {categoriesItems.map((item) => (
-              <div className="carousel-item flex flex-col items-center">
-                <div className="flex min-w-min flex-col items-center justify-center rounded-xl border border-gray-300 px-4 py-3.5 hover:border-accent-green-1 hover:bg-accent-green-1 hover:bg-opacity-10">
-                  <img
-                    src={item.icon}
-                    className="h-6 opacity-50 hover:fill-black"
-                    alt=""
-                  />
-                  <h3 className="mt-2 text-[13px] text-gray-500">
-                    {item.name}
-                  </h3>
-                </div>
-              </div>
-            ))}
-          </div> */}
         </div>
       </div>
       {/* End: Filter Section */}

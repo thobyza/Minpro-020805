@@ -1,0 +1,184 @@
+{
+    "data": [
+      {
+        "id": 1, 
+        "name": "accusamus beatae",
+        "url": "https://picsum.photos/500/200?random=2",
+        "price": 175000,
+        "location": "Bandung",
+        "category": "concert",
+        "date": "2023-10-25",
+        "organizer": "Smitham Inc"
+      },
+      {
+        "id": 2, 
+        "name": "reprehenderit",
+        "url": "https://picsum.photos/500/200?random=3",
+        "price": 80000,
+        "location": "Jakarta",
+        "category": "festival",
+        "date": "2023-10-20",
+        "organizer": "Stanton - Powlowski"
+      },
+      {
+        "id": 3, 
+        "name": "accusamus beatae",
+        "url": "https://picsum.photos/500/200?random=4",
+        "price": 175000,
+        "location": "Bandung",
+        "category": "concert",
+        "date": "2023-10-25",
+        "organizer": "Smitham Inc"
+      },
+      {
+        "id": 4, 
+        "name": "accusamus beatae",
+        "url": "https://picsum.photos/500/200?random=5",
+        "price": 175000,
+        "location": "Bandung",
+        "category": "social",
+        "date": "2023-10-25",
+        "organizer": "Smitham Inc"
+      },
+      {
+        "id": 5, 
+        "name": "accusamus beatae",
+        "url": "https://picsum.photos/500/200?random=6",
+        "price": 175000,
+        "location": "Bandung",
+        "category": "workshop",
+        "date": "2023-10-25",
+        "organizer": "Smitham Inc"
+      },
+      {
+        "id": 6, 
+        "name": "accusamus beatae",
+        "url": "https://picsum.photos/500/200?random=7",
+        "price": 175000,
+        "location": "Bandung",
+        "category": "festival",
+        "date": "2023-10-25",
+        "organizer": "Smitham Inc"
+      },
+      {
+        "id": 7, 
+        "name": "accusamus beatae",
+        "url": "https://picsum.photos/500/200?random=8",
+        "price": 175000,
+        "location": "Bandung",
+        "category": "shows",
+        "date": "2023-10-25",
+        "organizer": "Smitham Inc"
+      },
+      {
+        "id": 8, 
+        "name": "accusamus beatae",
+        "url": "https://picsum.photos/500/200?random=9",
+        "price": 175000,
+        "location": "Bandung",
+        "category": "concert",
+        "date": "2023-10-25",
+        "organizer": "Smitham Inc"
+      },
+      {
+        "id": 9, 
+        "name": "accusamus beatae",
+        "url": "https://picsum.photos/500/200?random=10",
+        "price": 175000,
+        "location": "Bandung",
+        "category": "shows",
+        "date": "2023-10-25",
+        "organizer": "Smitham Inc"
+      },
+      {
+        "id": 10, 
+        "name": "accusamus beatae",
+        "url": "https://picsum.photos/500/200?random=11",
+        "price": 175000,
+        "location": "Bandung",
+        "category": "social",
+        "date": "2023-10-25",
+        "organizer": "Smitham Inc"
+      },
+      {
+        "id": 11, 
+        "name": "accusamus beatae",
+        "url": "https://picsum.photos/500/200?random=12",
+        "price": 175000,
+        "location": "Bandung",
+        "category": "workshop",
+        "date": "2023-10-25",
+        "organizer": "Smitham Inc"
+      },
+      {
+        "id": 12, 
+        "name": "accusamus beatae",
+        "url": "https://picsum.photos/500/200?random=13",
+        "price": 175000,
+        "location": "Bandung",
+        "category": "seminar",
+        "date": "2023-10-25",
+        "organizer": "Smitham Inc"
+      },
+      {
+        "id": 13, 
+        "name": "accusamus beatae",
+        "url": "https://picsum.photos/500/200?random=149",
+        "price": 175000,
+        "location": "Bandung",
+        "category": "seminar",
+        "date": "2023-10-25",
+        "organizer": "Smitham Inc"
+      },
+      {
+        "id": 14, 
+        "name": "accusamus beatae",
+        "url": "https://picsum.photos/500/200?random=141",
+        "price": 175000,
+        "location": "Bandung",
+        "category": "concert",
+        "date": "2023-10-25",
+        "organizer": "Smitham Inc"
+      },
+      {
+        "id": 15, 
+        "name": "hygfij fkjjaf",
+        "url": "https://picsum.photos/500/200?random=142",
+        "price": 175000,
+        "location": "Bandung",
+        "category": "concert",
+        "date": "2023-10-25",
+        "organizer": "Smitham Inc"
+      },
+      {
+        "id": 16, 
+        "name": "mojasf fokoq",
+        "url": "https://picsum.photos/500/200?random=43",
+        "price": 175000,
+        "location": "Bandung",
+        "category": "concert",
+        "date": "2023-10-25",
+        "organizer": "Smitham Inc"
+      },
+      {
+        "id": 17, 
+        "name": "fkoahuf fa",
+        "url": "https://picsum.photos/500/200?random=44",
+        "price": 175000,
+        "location": "Bandung",
+        "category": "concert",
+        "date": "2023-10-25",
+        "organizer": "Smitham Inc"
+      },
+      {
+        "id": 18, 
+        "name": "faffd",
+        "url": "https://picsum.photos/500/200?random=45",
+        "price": 175000,
+        "location": "Bandung",
+        "category": "concert",
+        "date": "2023-10-25",
+        "organizer": "Smitham Inc"
+      }
+    ]
+}
