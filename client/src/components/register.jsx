@@ -5,9 +5,7 @@ import { Formik, Form, ErrorMessage, Field } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { setData } from "../redux/userSlice";
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
 
 const RegisterSchema = Yup.object().shape({
   email: Yup.string()
@@ -16,89 +14,79 @@ const RegisterSchema = Yup.object().shape({
   password: Yup.string()
     .min(6, "Minimum 6 character")
     .required("Password is required"),
-  referralCode: Yup.string().min(6, "Minimum 6 character"),
+  firstname: Yup.string().nullable(),
+  lastname: Yup.string().nullable(),
+  cellphone: Yup.number().nullable(),
+  city: Yup.string().nullable(),
+  referral: Yup.string().nullable(),
 });
-
-const referralCode = () => {
-  return Math.random().toString(36).substring(2, 8);
-};
 
 export function Register() {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
-  const [isReferralCode, setIsReferralCode] = useState(0);
+  const [city, setCity] = useState([]);
   const navigate = useNavigate();
-  const dispatch = useDispatch();
   const togglePassword = () => {
     setIsPasswordVisible((prevState) => !prevState);
   };
 
-  const handleReferral = async (data) => {
+  const handleSubmit = async (data) => {
+    console.log(data);
     try {
-      const response = await axios.get(
-        `http://localhost:2000/users?isReferralCode=${data.referral}`,
-      );
-      if (response.data[0]?.id) {
-        dispatch(setData(response.data[0]));
-        setIsReferralCode(1);
-        // localStorage.setItem("id", response.data[0]?.id);
-      }
+      const reg = await axios.post(`http://localhost:2000/users`, data);
+      console.log(reg);
+      navigate("/login");
     } catch (err) {
       console.log(err);
     }
   };
 
-  const handleSubmit = async (data) => {
-    if (isReferralCode) {
-      try {
-        await axios.post(`http://localhost:2000/users`, data);
-        navigate("/login");
-      } catch (err) {
-        console.log(err);
-      }
-    } else if (isReferralCode == "") {
-      try {
-        await axios.post(`http://localhost:2000/users`, data);
-        // navigate("/login");
-      } catch (err) {
-        console.log(err);
-      }
-    } else {
-      alert("Referral code is not valid");
+  const handleCity = async () => {
+    try {
+      const listCity = await axios.get(`http://localhost:2000/city`);
+      setCity(listCity.data);
+      // console.log(listCity);
+    } catch (err) {
+      console.log(err);
     }
   };
 
+  useEffect(() => {
+    handleCity();
+  }, []);
   return (
     <>
       <div className=" flex min-h-screen flex-col items-center bg-bg-gradient to-white  bg-cover bg-center sm:justify-center sm:pt-0 lg:h-screen lg:bg-none">
-        <div className="mt-7 flex items-center gap-3 sm:-mt-12 lg:absolute lg:top-0 lg:ml-[34.5%] lg:mt-10 ">
-          <img
-            className="w-12 pt-10 md:w-10 lg:w-10"
-            src={imgLogo}
-            alt="logo"
-          />
-          <h1 className="title-landing mt-10 text-2xl font-bold text-zinc-900 md:text-4xl">
-            FESTIHUB
-          </h1>
-        </div>
+        <a href="/">
+          <div className="-mt-6 flex items-center gap-3 sm:-mt-12 lg:absolute lg:top-0 lg:ml-[10.8%] lg:mt-0 ">
+            <img
+              className="w-12 pt-10 md:w-10 lg:w-10"
+              src={imgLogo}
+              alt="logo"
+            />
+            <h1 className="title-landing mt-10 text-2xl font-bold text-zinc-900 md:text-4xl">
+              FESTIHUB
+            </h1>
+          </div>
+        </a>
 
-        <section className="flex w-screen justify-between lg:grid lg:h-screen lg:grid-cols-2 lg:space-x-28">
-          <div className="mt-20 flex flex-col items-center lg:col-span-1 lg:mt-0">
+        <section className="flex w-screen justify-between lg:mb-2 lg:grid lg:h-screen lg:grid-cols-2 lg:space-x-28">
+          <div className="mt-20 flex flex-col items-center lg:col-span-1 lg:mt-0 lg:pt-1">
             <img className="w-0 lg:h-screen lg:w-full" src={festi} alt="" />
           </div>
 
-          <div className="md:px-19 m-auto mt-10 overflow-hidden rounded-2xl bg-white px-6 py-4 shadow-2xl sm:max-w-md sm:rounded-2xl lg:relative lg:col-span-1 lg:-mr-0 lg:mt-48 lg:bg-none lg:shadow-none">
+          <div className="md:px-19 m-auto mt-10 overflow-hidden rounded-2xl bg-white px-6 py-4 shadow-2xl sm:max-w-md sm:rounded-2xl lg:relative lg:col-span-1 lg:-mr-0 lg:mt-[100px] lg:bg-none lg:shadow-none">
             <header>
               <h1 className="title-head flex justify-center text-xl font-semibold md:text-2xl lg:justify-start">
-                Buat akun FestiHub kamu
+                Create your festihub account
               </h1>
               <div className="mt-4 flex justify-center text-[#393E46] md:text-lg lg:justify-start">
-                Sudah punya akun?{" "}
+                Already have an account?{" "}
                 <span>
                   <a
                     className="ml-1 text-[#4ECCA3] hover:underline"
                     href="/login"
                   >
-                    Masuk
+                    Sign in
                   </a>
                 </span>
               </div>
@@ -107,20 +95,68 @@ export function Register() {
               initialValues={{
                 email: "",
                 password: "",
-                referral: referralCode(),
-                // isReferralCode: "",
+                firstname: "",
+                lastname: "",
+                cellphone: "",
+                city: "",
+                referral: "",
               }}
               validationSchema={RegisterSchema}
               onSubmit={(values, action) => {
+                localStorage.setItem("firstname", values.firstname);
+                localStorage.setItem("lastname", values.lastname);
+                localStorage.setItem("city", values.city);
+                localStorage.setItem("cellphone", values.cellphone);
                 console.log(values);
                 handleSubmit(values);
-                handleReferral(values);
                 action.resetForm();
               }}
             >
-              {() => {
+              {(props) => {
                 return (
                   <Form>
+                    <div className="mt-4">
+                      <div className="flex flex-col items-start">
+                        <Field
+                          as={TEInput}
+                          label="First Name"
+                          type="text"
+                          name="firstname"
+                          className="mr-16 ring-0 ring-offset-0 focus:ring-0 md:mr-72"
+                        />
+                      </div>
+                    </div>
+                    <div className="mt-4">
+                      <div className="flex flex-col items-start">
+                        <Field
+                          as={TEInput}
+                          label="Last Name"
+                          type="text"
+                          name="lastname"
+                          className="mr-16 ring-0 ring-offset-0 focus:ring-0 md:mr-72"
+                        />
+                      </div>
+                    </div>
+                    <div className="mt-4">
+                      <div className="flex flex-col items-start">
+                        <Field
+                          as={TEInput}
+                          label="Cell Phone"
+                          type="number"
+                          name="cellphone"
+                          className="mr-16 ring-0 ring-offset-0 focus:ring-0 md:mr-72"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="mt-4 text-[#737373]">
+                      <select class=" text-md block w-full rounded-md  border border-gray-300 focus:border-blue-500 focus:ring-blue-500">
+                        {city.map((item) => {
+                          return <option key={item.id}>{item.city}</option>;
+                        })}
+                      </select>
+                    </div>
+
                     <div className="mt-4">
                       <div className="flex flex-col items-start">
                         <Field
@@ -194,8 +230,7 @@ export function Register() {
                         <Field
                           as={TEInput}
                           label="Code Referral"
-                          type="IsReferralCode"
-                          name="IsReferralCode"
+                          name="referral"
                           className="mr-16 mt-1 ring-0 ring-offset-0 focus:ring-0 md:mr-72"
                         />
                       </div>
@@ -212,29 +247,6 @@ export function Register() {
                 );
               }}
             </Formik>
-            {/* <div className="my-4 flex w-full items-center">
-              <span className="h-0.5 w-full bg-[#bbbbbb]" />
-              <p className="rounded-xl border border-[#bbbbbb] px-3 text-[#393E46]">
-                OR
-              </p>
-              <span className="h-0.5 w-full bg-[#bbbbbb]" />
-            </div>
-            <div className="my-6 space-y-2">
-              <button
-                aria-label="Login with Google"
-                type="button"
-                className="flex w-full items-center justify-center space-x-4 rounded-sm border p-2 duration-500 hover:bg-gray-200 focus:ring-0 focus:ring-gray-400 focus:ring-offset-0 dark:border-gray-400"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 32 32"
-                  className="h-5 w-5 fill-current"
-                >
-                  <path d="M16.318 13.714v5.484h9.078c-0.37 2.354-2.745 6.901-9.078 6.901-5.458 0-9.917-4.521-9.917-10.099s4.458-10.099 9.917-10.099c3.109 0 5.193 1.318 6.38 2.464l4.339-4.182c-2.786-2.599-6.396-4.182-10.719-4.182-8.844 0-16 7.151-16 16s7.156 16 16 16c9.234 0 15.365-6.49 15.365-15.635 0-1.052-0.115-1.854-0.255-2.651z"></path>
-                </svg>
-                <p className="text-[#393E46] md:text-lg">Login with Google</p>
-              </button>
-            </div> */}
           </div>
         </section>
       </div>

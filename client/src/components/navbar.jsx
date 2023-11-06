@@ -1,14 +1,24 @@
 import { useState } from "react";
 import appLogo from "../assets/logo-full.png";
-
-import { Link } from "react-router-dom";
+import userLogo from "../assets/user.png";
+import { Link, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 export const Navbar = () => {
+  const token = localStorage.getItem("token");
+  const navigate = useNavigate();
+  const profile = useSelector((state) => state.user.value);
   let Links = [
     { name: "Home", link: "/" },
     { name: "Create Events", link: "/" },
     { name: "Discover", link: "/" },
   ];
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    navigate("/");
+    // window.location.reload();
+  };
 
   let [open, setOpen] = useState(false);
 
@@ -57,24 +67,77 @@ export const Navbar = () => {
               </a>
             </li>
           ))}
-          <li className="mt-3 flex flex-col items-center gap-5 pr-6 md:ml-5 md:mt-0 md:flex-row md:gap-4 md:pr-0">
-            <Link to="/register">
-              <button
+          {token ? (
+            <div className="ml-10">
+              <img
+                id="avatarButton"
                 type="button"
-                className="w-full rounded-lg border border-gray-300 bg-white px-5 py-2.5 text-sm font-medium text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-1 focus:ring-gray-200"
+                data-dropdown-toggle="userDropdown"
+                data-dropdown-placement="bottom-start"
+                class="relative mt-1.5 h-8 w-8 cursor-pointer rounded-full"
+                src={userLogo}
+                alt="User dropdown"
+              />
+
+              <div
+                id="userDropdown"
+                className="z-10 hidden w-44 rounded-lg md:divide-y md:divide-gray-100 md:bg-white md:shadow"
               >
-                Register
-              </button>
-            </Link>
-            <Link to="/login">
-              <button
-                type="button"
-                className="w-full rounded-lg border border-gray-300 bg-accent-grey-1 px-5 py-2.5 text-sm font-medium text-white hover:bg-accent-green-1 focus:outline-none focus:ring-1 focus:ring-emerald-500"
-              >
-                Sign in
-              </button>
-            </Link>
-          </li>
+                <div class="text-sm text-gray-900 md:px-4">
+                  <div class="-mx-4 cursor-pointer truncate py-2 pl-4 font-medium md:hover:rounded-t-lg md:hover:bg-gray-100">
+                    Switch to Account <br />{" "}
+                    <span className="text-accent-green-1">Organizer</span>
+                  </div>
+                </div>
+                <ul
+                  class="text-sm text-gray-700"
+                  aria-labelledby="avatarButton"
+                >
+                  <li>
+                    <a href="#" class="block py-2 md:px-4 md:hover:bg-gray-100">
+                      {profile?.email}
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="/contact-info"
+                      class="block py-2 md:px-4 md:hover:bg-gray-100"
+                    >
+                      Settings
+                    </a>
+                  </li>
+                </ul>
+                <div>
+                  <a
+                    type="button"
+                    onClick={handleLogout}
+                    class="hover:bg-gray-100dark:hover:text-white block cursor-pointer py-2 text-sm text-red-800 md:rounded-b-lg md:px-4 md:hover:bg-gray-100"
+                  >
+                    Sign out
+                  </a>
+                </div>
+              </div>
+            </div>
+          ) : (
+            <li className="mt-3 flex flex-col items-center gap-5 pr-6 md:ml-5 md:mt-0 md:flex-row md:gap-4 md:pr-0">
+              <Link to="/register">
+                <button
+                  type="button"
+                  className="w-full rounded-lg border border-gray-300 bg-white px-5 py-2.5 text-sm font-medium text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-1 focus:ring-gray-200"
+                >
+                  Register
+                </button>
+              </Link>
+              <Link to="/login">
+                <button
+                  type="button"
+                  className="w-full rounded-lg border border-gray-300 bg-accent-grey-1 px-5 py-2.5 text-sm font-medium text-white hover:bg-accent-green-1 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                >
+                  Sign in
+                </button>
+              </Link>
+            </li>
+          )}
         </ul>
       </div>
     </div>
