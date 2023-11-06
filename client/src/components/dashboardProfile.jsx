@@ -81,22 +81,9 @@ export const Dashboard = () => {
                 <span class="ml-3 flex-1 whitespace-nowrap">Contact Info</span>
               </a>
             </li>
-            <hr />
-            <li>
-              <p className="ml-5 text-xs font-bold">User mode</p>
-              <a
-                href="#"
-                class="group flex items-center p-2 text-gray-900 hover:bg-gray-100"
-              >
-                <span class="ml-3 flex-1 whitespace-nowrap">
-                  Switch to Event Creator Account
-                </span>
-              </a>
-            </li>
           </ul>
         </div>
       </aside>
     </>
   );
 };
-// switch to buyer's account
