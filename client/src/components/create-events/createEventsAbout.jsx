@@ -1,4 +1,4 @@
-export const CreateEventsAbout = () => {
+export const CreateEventsAbout = ({ formik }) => {
   return (
     <div className="flex flex-col space-y-8 rounded-lg bg-white px-6 py-9 lg:px-14">
       {/*  */}
@@ -21,15 +21,22 @@ export const CreateEventsAbout = () => {
           >
             <textarea
               type="text"
-              id="addDetails"
+              name="description"
+              value={formik.values.description}
+              onChange={formik.handleChange}
               className="peer h-24 w-full border-none bg-transparent px-4 py-5 placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0"
               placeholder="Event Details"
+              error={formik.touched.description && formik.errors.description}
             />
-
             <span className="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-white p-0.5 px-1.5 text-sm font-medium text-gray-600 transition-all peer-placeholder-shown:top-6 peer-placeholder-shown:text-sm peer-focus:top-0 peer-focus:text-xs">
               Add details
             </span>
           </label>
+          {formik.touched.description && formik.errors.description ? (
+            <div className=" text-sm text-red-500">
+              {formik.errors.description}
+            </div>
+          ) : null}
         </div>
         {/* Terms & Condition */}
         <h4 className="pt-4 text-[1.2rem] font-semibold">Terms & Conditions</h4>
@@ -40,7 +47,9 @@ export const CreateEventsAbout = () => {
           >
             <textarea
               type="text"
-              id="addDetails"
+              name="termsCondition"
+              value={formik.values.termsCondition}
+              onChange={formik.handleChange}
               className="peer h-24 w-full border-none bg-transparent px-4 py-5 placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0"
               placeholder="Event Details"
             />
@@ -57,15 +66,15 @@ export const CreateEventsAbout = () => {
             This is the image attendees will see at the top of your listing
           </p>
         </div>
-        <div class="mx-auto pt-1">
-          <div class="flex w-full items-center justify-center">
+        <div className="mx-auto pt-1">
+          <div className="flex w-full items-center justify-center">
             <label
               for="dropzone-file"
-              class="dark:hover:bg-bray-800 flex h-64 w-full cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 hover:bg-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:hover:border-gray-500 dark:hover:bg-gray-600"
+              className="dark:hover:bg-bray-800 flex h-64 w-full cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 hover:bg-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:hover:border-gray-500 dark:hover:bg-gray-600"
             >
-              <div class="flex flex-col items-center justify-center pb-6 pt-5">
+              <div className="flex flex-col items-center justify-center pb-6 pt-5">
                 <svg
-                  class="mb-3 h-10 w-10 text-gray-400"
+                  className="mb-3 h-10 w-10 text-gray-400"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -78,15 +87,30 @@ export const CreateEventsAbout = () => {
                     d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
                   ></path>
                 </svg>
-                <p class="mb-2 text-sm text-gray-500 dark:text-gray-400">
-                  <span class="font-semibold">Click to upload</span> or drag and
-                  drop
+                <p className="mb-2 text-sm text-gray-500">
+                  <span className="font-semibold">Click to upload</span> or drag
+                  and drop
                 </p>
-                <p class="text-xs text-gray-500 dark:text-gray-400">
+                <p className="text-xs text-gray-500">
                   PNG, JPG (MAX. 800x400px)
                 </p>
               </div>
-              <input id="dropzone-file" type="file" class="hidden" />
+              <input
+                id="dropzone-file"
+                type="file"
+                className="hidden"
+                name="img"
+                // accept="image/*"
+                // value={formik.values.img}
+                // onChange={formik.handleChange}
+                onChange={(e) =>
+                  formik.setFieldValue("img", e.currentTarget.files[0])
+                }
+                error={formik.touched.img && formik.errors.img}
+              />
+              {formik.touched.img && formik.errors.img ? (
+                <div className=" text-sm text-red-500">{formik.errors.img}</div>
+              ) : null}
             </label>
           </div>
         </div>

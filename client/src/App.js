@@ -15,6 +15,8 @@ import { Dashboard } from "./components/dashboardProfile";
 import { AccountInfo } from "./components/accountInfo";
 import { Preferences } from "./components/preferences";
 
+import 'flowbite';
+
 const router = createBrowserRouter([
   { path: "/", element: <HomePage /> },
   { path: "/preferences", element: <Preferences /> },

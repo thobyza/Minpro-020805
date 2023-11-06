@@ -11,11 +11,14 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Category.hasOne(models.Events)
+      // Category.hasOne(models.Events)
     }
   }
   Category.init({
-    event_category: DataTypes.STRING
+    event_category: {
+      type: DataTypes.STRING,
+      allowNull: false
+    }
   }, {
     sequelize,
     modelName: 'Category',
