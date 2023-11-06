@@ -19,10 +19,10 @@ export const TopDestination = () => {
     <section className="bg-accent-grey-1 px-[5vw] pb-8 pt-12">
       {/* Title */}
       <div className="mb-4 flex flex-col items-center justify-between space-y-4 pb-5">
-        <h1 className="text-4xl font-semibold text-white">
+        <h1 className="text-3xl font-semibold text-white md:text-4xl">
           Top <span className="underline-green">Destinations</span>
         </h1>
-        <p className="text=[1.1rem] px-5 pt-3 text-center text-base text-white">
+        <p className="px-5 pt-3 text-center text-base text-[#e1e1e1]">
           Find the perfect event destination to make your moments truly
           memorable
         </p>
