@@ -20,7 +20,7 @@ export const UpcomingEvents = () => {
 
   useEffect(() => {
     fetchApi();
-  });
+  }, []);
 
   return (
     <div className="flex flex-col items-center justify-center bg-gray-50 px-6 pb-8 pt-10 md:px-[5vw]">

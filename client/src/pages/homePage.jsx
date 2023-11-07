@@ -11,7 +11,7 @@ import { UpcomingEvents } from "../components/upcomingEvents";
 
 export const HomePage = () => {
   const [data, setData] = useState([]);
-  const [category, setCategory] = useState("concert");
+  const [category, setCategory] = useState("Concert");
 
   const fetchApi = async () => {
     try {
@@ -26,7 +26,7 @@ export const HomePage = () => {
 
   useEffect(() => {
     fetchApi();
-  });
+  }, []);
 
   return (
     <>

@@ -90,5 +90,66 @@ module.exports = {
             console.log(err);
             res.status(400).send({ message: err.message })
         }
+    },
+
+    getByCategory: async (req, res) => {
+        try {
+            const { category } = req.query
+            const result = await Event.findAll({
+                where: {
+                    category
+                },
+                include: [
+                    {
+                        model: Ticket,
+                        required: true,
+                        attributes: ['ticket_name', 'ticket_quantity', 'ticket_price']
+                    }
+                ]
+            })
+            console.log(result);
+            res.status(200).send({ result })
+        } catch (err) {
+            console.log(err);
+            res.status(400).send({ message: err.message })
+        }
+    },
+
+    getByCity: async (req, res) => {
+        try {
+            const { city } = req.query
+            const result = await Event.findAll({
+                where: {
+                    city
+                },
+                include: [
+                    {
+                        model: Ticket,
+                        required: true,
+                        attributes: ['ticket_name', 'ticket_quantity', 'ticket_price']
+                    }
+                ]
+            })
+            console.log(result);
+            res.status(200).send({ result })
+        } catch (err) {
+            console.log(err);
+            res.status(400).send({ message: err.message })
+        }
+    },
+
+    getById: async (req, res) => {
+        try {
+            const result = await Events.findOne({
+                where: {
+                    id: req.params.id
+                }
+            })
+            console.log(result);
+            res.status(200).send({ result })
+        } catch (err) {
+            console.log(err);
+            res.status(400).send({ message: err.message })
+        }
     }
 }
