@@ -10,15 +10,15 @@ import iconSocial from "../assets/icons-social.png";
 
 export const Categories = ({ category, setCategory }) => {
   const categoriesItems = [
-    { icon: iconMusic, name: "concert" },
-    { icon: iconTheatre, name: "shows" },
-    { icon: iconFood, name: "festival" },
-    { icon: iconSocial, name: "social" },
-    { icon: iconWorkshop, name: "workshop" },
-    { icon: iconHealth, name: "seminar" },
-    { icon: iconBusiness, name: "conference" },
-    { icon: iconExhibition, name: "exhibition" },
-    { icon: iconCompetition, name: "competition" },
+    { icon: iconMusic, name: "Concert" },
+    { icon: iconTheatre, name: "Shows" },
+    { icon: iconFood, name: "Festival" },
+    { icon: iconSocial, name: "Social" },
+    { icon: iconWorkshop, name: "Workshop" },
+    { icon: iconHealth, name: "Seminar" },
+    { icon: iconBusiness, name: "Conference" },
+    { icon: iconExhibition, name: "Exhibition" },
+    { icon: iconCompetition, name: "Competition" },
   ];
 
   const handleClick = (data) => {

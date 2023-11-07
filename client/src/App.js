@@ -14,8 +14,10 @@ import { Dashboard } from "./components/dashboardProfile";
 import { AccountInfo } from "./components/accountInfo";
 import { Preferences } from "./components/preferences";
 import { setReferrals } from "./redux/referralSlice";
+import { Tabs } from "./components/tabs";
 
 import 'flowbite';
+import { TransactionPage } from "./pages/transactionPage";
 
 const router = createBrowserRouter([
   { path: "/", element: <HomePage /> },
@@ -31,6 +33,8 @@ const router = createBrowserRouter([
   { path: "/create-events", element: <CreateEvents /> },
   { path: "/browse-events", element: <BrowseEvents /> },
   { path: "/event-details", element: <EventDetails /> },
+  { path: "/tabs", element: <Tabs /> },
+  { path: "/transaction", element: <TransactionPage /> }
 ]);
 
 function App() {

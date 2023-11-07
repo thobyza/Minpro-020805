@@ -9,7 +9,7 @@ export const EventDetails = () => {
     <>
       <Navbar />
       <section className="bg-[#F5F5F5]">
-        <div className="lg:pt-[14vh ] flex flex-col space-y-4 pt-[12vh] lg:flex-row lg:space-x-3 lg:space-y-0 lg:px-[9vw]">
+        <div className="flex flex-col space-y-4 pt-[12vh] lg:flex-row lg:space-x-3 lg:space-y-0 lg:px-[9vw] lg:pt-[14vh]">
           {/* Left side */}
           <div className="flex flex-col space-y-4 px-[3.5vw] lg:px-[1vw]">
             <div className="flex w-full lg:w-[24rem]">

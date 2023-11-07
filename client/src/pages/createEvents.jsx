@@ -46,7 +46,7 @@ export const CreateEvents = () => {
       ticket_quantity: null,
     },
     validationSchema: ValidationSchema,
-    onSubmit: async (values) => {
+    onSubmit: async (values, action) => {
       try {
         const data = new FormData();
         data.append("event_title", values.event_title);
@@ -72,6 +72,7 @@ export const CreateEvents = () => {
         console.log("Event created successfully", data);
 
         alert("event created successfully");
+        // window.location.reload();
       } catch (error) {
         console.log("error creating event:", error);
       }
