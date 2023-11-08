@@ -80,7 +80,7 @@ export function Login() {
                 viewBox="0 0 16 20"
               ></svg>
             </div>
-            <div class="mb-4 h-2.5 w-48 rounded-full bg-gray-200 dark:bg-gray-700"></div>
+            <div class="mb-4 mt-20 h-2.5 w-48 rounded-full bg-gray-200 dark:bg-gray-700"></div>
             <div class="mb-2.5 h-2 rounded-full bg-gray-200 dark:bg-gray-700"></div>
             <div class="mb-2.5 h-2 rounded-full bg-gray-200 dark:bg-gray-700"></div>
             <div class="h-2 rounded-full bg-gray-200 dark:bg-gray-700"></div>
@@ -96,7 +96,7 @@ export function Login() {
                 fill="currentColor"
                 viewBox="0 0 20 20"
               ></svg>
-              <div>
+              <div className="mt-32">
                 <div class="mb-2 h-2.5 w-32 rounded-full bg-gray-200 dark:bg-gray-700"></div>
                 <div class="h-2 w-48 rounded-full bg-gray-200 dark:bg-gray-700"></div>
                 <div class="h-2 w-48 rounded-full bg-gray-200 dark:bg-gray-700"></div>

@@ -9,17 +9,13 @@ import { EventDetails } from "./pages/eventDetails";
 import { useDispatch } from "react-redux";
 import { setData } from "./redux/userSlice";
 import { useEffect } from "react";
-import { Required } from "./components/required";
-import { Dashboard } from "./components/dashboardProfile";
 import { AccountInfo } from "./components/accountInfo";
-import { Preferences } from "./components/preferences";
 import { setReferrals } from "./redux/referralSlice";
 
-import 'flowbite';
+import "flowbite";
 
 const router = createBrowserRouter([
   { path: "/", element: <HomePage /> },
-  { path: "/preferences", element: <Preferences /> },
   { path: "/contact-info", element: <AccountInfo /> },
   { path: "/login", element: <LoginPage /> },
   { path: "/register", element: <RegisterPage /> },

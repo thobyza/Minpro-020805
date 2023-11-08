@@ -6,6 +6,8 @@ import * as Yup from "yup";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { Select, initTE } from "tw-elements";
+initTE({ Select });
 
 const RegisterSchema = Yup.object().shape({
   email: Yup.string()
@@ -23,11 +25,63 @@ const RegisterSchema = Yup.object().shape({
 
 export function Register() {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
-  const [city, setCity] = useState([]);
   const navigate = useNavigate();
   const togglePassword = () => {
     setIsPasswordVisible((prevState) => !prevState);
   };
+
+  const city = [
+    { value: "Aceh", label: "Aceh" },
+    { value: "Bali", label: "Bali" },
+    { value: "Balikpapan", label: "Balikpapan" },
+    { value: "Bandar Lampung", label: "Bandar Lampung" },
+    { value: "Bandung", label: "Bandung" },
+    { value: "Banjarmasin", label: "Banjarmasin" },
+    { value: "Batam", label: "Batam" },
+    { value: "Bekasi", label: "Bekasi" },
+    { value: "Bengkulu", label: "Bengkulu" },
+    { value: "Bogor", label: "Bogor" },
+    { value: "Cilegon", label: "Cilegon" },
+    { value: "Cimahi", label: "Cimahi" },
+    { value: "Cirebon", label: "Cirebon" },
+    { value: "Denpasar", label: "Denpasar" },
+    { value: "Depok", label: "Depok" },
+    { value: "Jakarta", label: "Jakarta" },
+    { value: "Jambi", label: "Jambi" },
+    { value: "Jayapura", label: "Jayapura" },
+    { value: "Karawang", label: "Karawang" },
+    { value: "Kediri", label: "Kediri" },
+    { value: "Kupang", label: "Kupang" },
+    { value: "Labuan Bajo", label: "Labuan Bajo" },
+    { value: "Madiun", label: "Madiun" },
+    { value: "Magelang", label: "Magelang" },
+    { value: "Makassar", label: "Makassar" },
+    { value: "Malang", label: "Malang" },
+    { value: "Manado", label: "Manado" },
+    { value: "Mataram", label: "Mataram" },
+    { value: "Medan", label: "Medan" },
+    { value: "Padang", label: "Padang" },
+    { value: "Palembang", label: "Palembang" },
+    { value: "Palu", label: "Palu" },
+    { value: "Pangkal Pinang", label: "Pangkal Pinang" },
+    { value: "Parepare", label: "Parepare" },
+    { value: "Pekanbaru", label: "Pekanbaru" },
+    { value: "Pontianak", label: "Pontianak" },
+    { value: "Probolinggo", label: "Probolinggo" },
+    { value: "Purwokerto", label: "Purwokerto" },
+    { value: "Salatiga", label: "Salatiga" },
+    { value: "Samarinda", label: "Samarinda" },
+    { value: "Semarang", label: "Semarang" },
+    { value: "Serang", label: "Serang" },
+    { value: "Sibolga", label: "Sibolga" },
+    { value: "Sukabumi", label: "Sukabumi" },
+    { value: "Surabaya", label: "Surabaya" },
+    { value: "Tangerang", label: "Tangerang" },
+    { value: "Tanjungpinang", label: "Tanjungpinang" },
+    { value: "Tasikmalaya", label: "Tasikmalaya" },
+    { value: "Tegal", label: "Tegal" },
+    { value: "Yogyakarta", label: "Yogyakarta" },
+  ];
 
   const handleSubmit = async (data) => {
     console.log(data);
@@ -40,24 +94,11 @@ export function Register() {
     }
   };
 
-  const handleCity = async () => {
-    try {
-      const listCity = await axios.get(`http://localhost:2000/city`);
-      setCity(listCity.data);
-      // console.log(listCity);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  useEffect(() => {
-    handleCity();
-  }, []);
   return (
     <>
       <div className=" flex min-h-screen flex-col items-center bg-bg-gradient to-white  bg-cover bg-center sm:justify-center sm:pt-0 lg:h-screen lg:bg-none">
         <a href="/">
-          <div className="-mt-6 flex items-center gap-3 sm:-mt-12 lg:absolute lg:top-0 lg:ml-[10.8%] lg:mt-0 ">
+          <div className="-mt-6 flex items-center gap-3 sm:-mt-12 lg:absolute lg:top-0 lg:-mt-5 lg:ml-[10.8%] ">
             <img
               className="w-12 pt-10 md:w-10 lg:w-10"
               src={imgLogo}
@@ -74,7 +115,7 @@ export function Register() {
             <img className="w-0 lg:h-screen lg:w-full" src={festi} alt="" />
           </div>
 
-          <div className="md:px-19 m-auto mt-10 overflow-hidden rounded-2xl bg-white px-6 py-4 shadow-2xl sm:max-w-md sm:rounded-2xl lg:relative lg:col-span-1 lg:-mr-0 lg:mt-[100px] lg:bg-none lg:shadow-none">
+          <div className="md:px-19 m-auto mt-10 overflow-hidden rounded-2xl bg-white px-6 py-4 shadow-2xl sm:max-w-md sm:rounded-2xl lg:relative lg:col-span-1 lg:-mr-0 lg:mt-[85px] lg:bg-none lg:shadow-none">
             <header>
               <h1 className="title-head flex justify-center text-xl font-semibold md:text-2xl lg:justify-start">
                 Create your festihub account
@@ -149,12 +190,20 @@ export function Register() {
                       </div>
                     </div>
 
-                    <div className="mt-4 text-[#737373]">
-                      <select class=" text-md block w-full rounded-md  border border-gray-300 focus:border-blue-500 focus:ring-blue-500">
-                        {city.map((item) => {
-                          return <option key={item.id}>{item.city}</option>;
-                        })}
-                      </select>
+                    <div className="mt-4">
+                      <div className="flex flex-col items-start">
+                        <Field
+                          as="select"
+                          name="city"
+                          className="w-full rounded-sm border-[#D4D4D4] text-[#737373]"
+                        >
+                          {city.map((option) => (
+                            <option key={option.value} value={option.value}>
+                              {option.label}
+                            </option>
+                          ))}
+                        </Field>
+                      </div>
                     </div>
 
                     <div className="mt-4">

@@ -12,34 +12,48 @@ const updateSchema = Yup.object().shape({
   lastname: Yup.string(),
   cellphone: Yup.number(),
   city: Yup.string(),
+  img: Yup.mixed(),
 });
 
 export const AccountInfo = () => {
   const token = localStorage.getItem("token");
   const profile = useSelector((state) => state.user.value);
+  let profileImg = profile.img;
   const id = profile.id;
   const initial = {
     firstname: profile.firstname || "",
     lastname: profile.lastname || "",
     city: profile.city || "",
     cellphone: profile.cellphone || "",
+    img: null,
   };
-  console.log(profile);
+
   const refer = useSelector((state) => state.referral.referrals);
-  const [picture, setPicture] = useState(localStorage.getItem("Image") || null);
-
-  useEffect(() => {
-    if (!picture) {
-      setPicture("http://via.placeholder.com/150.png?text=ADD A PROFILE IMAGE");
-    }
-  }, []);
-
   const handleSaveData = async (data) => {
     console.log(data);
+    const formData = new FormData();
+    formData.append("firstname", values.firstname);
+    formData.append("lastname", values.lastname);
+    formData.append("cellphone", values.cellphone);
+    formData.append("city", values.city);
+    formData.append("img", values.img);
+    window.location.reload();
+
     try {
-      await axios.patch(`http://localhost:2000/users/${id}`, data, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const response = await axios.patch(
+        `http://localhost:2000/users/${id}`,
+        formData,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+          "Content-Type": "multipart/form-data",
+        },
+      );
+      if (response.status === 200) {
+        profileImg = response.data.img;
+        window.location.reload();
+      } else {
+        console.error("Failed to save data to the database");
+      }
     } catch (err) {
       console.log(err);
     }
@@ -48,15 +62,12 @@ export const AccountInfo = () => {
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
-      const pic = URL.createObjectURL(file);
-      setPicture(pic);
-      localStorage.setItem("Image", pic);
+      setFieldValue("img", file);
     }
   };
 
   const handleRemoveImage = () => {
-    setPicture(null);
-    localStorage.removeItem("Image");
+    profileImg = null;
     window.location.reload();
   };
 
@@ -75,37 +86,25 @@ export const AccountInfo = () => {
         <div className="mr-[8%] flex gap-1 md:mr-[2%] md:gap-3">
           <img
             className="mt-6 h-8 w-8 rounded-full"
-            src={picture ? picture : userLogo}
-            alt="profile"
+            src={profileImg ? `http://localhost:2000/${profileImg}` : userLogo}
           />
           <div className="text-md mt-6 md:text-lg">{profile.email}</div>
         </div>
       </div>
       <hr className="ml-[34px] mr-[2.9%] mt-4 md:relative md:ml-72 md:mr-[2.9%] md:mt-0" />
 
-      <div class="ml-8 mt-20 flex w-[200px] flex-col items-center md:ml-72">
-        <p className="title-head mb-4 mr-[40px] w-40 text-2xl font-bold">
+      <div class="ml-8 mt-20 flex w-[150px] flex-col items-center md:ml-72 md:w-[200px]">
+        <p className="title-head mb-4 ml-3 w-40 text-2xl font-bold md:ml-0 md:mr-[40px]">
           Profile Photo
         </p>
-        <label
-          // for="dropzone-file"
-          class=" flex h-40 w-40 cursor-pointer flex-col items-center justify-center rounded-full"
-        >
-          <img className="h-40 w-40 rounded-full" src={picture} alt="" />
-          <input
-            // id="dropzone-file"
-            type="file"
-            class="hidden"
-            accept="img/*"
-            onChange={handleImageChange}
+        <label class=" flex h-40 w-40 flex-col items-center justify-center rounded-full">
+          <img
+            className=" h-40 w-40 rounded-full"
+            src={`http://localhost:2000/${profileImg}`}
+            alt=""
           />
         </label>
-        <div
-          onClick={handleRemoveImage}
-          className="cursor-pointer hover:underline"
-        >
-          Remove
-        </div>
+        {/* <div className="cursor-pointer hover:underline">Remove</div> */}
       </div>
 
       <div className="title-head ml-8 mt-16 text-2xl font-bold md:ml-72">
@@ -128,11 +127,11 @@ export const AccountInfo = () => {
         initialValues={initial}
         validationSchema={updateSchema}
         onSubmit={(values, action) => {
-          console.log("ini values", values);
+          console.log(values);
           handleSaveData(values);
         }}
       >
-        {({ values = initial }) => {
+        {({ values = initial, setFieldValue }) => {
           console.log(values);
           return (
             <Form className="absolute left-8 mt-14 pb-10 md:left-72">
@@ -147,7 +146,6 @@ export const AccountInfo = () => {
                     type="text"
                     name="firstname"
                     value={values.firstname}
-                    defaultValue={profile.firstname}
                     className="pb-4 ring-0 ring-offset-0 focus:ring-0 md:ml-0"
                   />
                 </div>
@@ -158,7 +156,6 @@ export const AccountInfo = () => {
                     name="lastname"
                     type="text"
                     value={values.lastname}
-                    defaultValue={profile.lastname}
                     className="pb-4 ring-0 ring-offset-0 focus:ring-0 md:ml-0"
                   />
                 </div>
@@ -170,7 +167,7 @@ export const AccountInfo = () => {
                     label="City"
                     name="city"
                     type="text"
-                    value={profile.city}
+                    value={values.city}
                     className="pb-4 ring-0 ring-offset-0 focus:ring-0 md:ml-0"
                   />
                 </div>
@@ -180,20 +177,32 @@ export const AccountInfo = () => {
                     label="Cell Phone"
                     name="cellphone"
                     type="text"
-                    value={profile.cellphone}
+                    value={values.cellphone}
                     className=" pb-4 ring-0 ring-offset-0 focus:ring-0 md:ml-0"
+                  />
+                </div>
+                <div className="mt-4">
+                  <input
+                    type="file"
+                    id="img"
+                    name="img"
+                    // accept="image/*"
+                    onChange={(e) =>
+                      setFieldValue("img", e.currentTarget.files[0])
+                    }
+                    className="absolute bottom-10 left-[14.5em] w-[6.6em] rounded-md md:right-[18.3em] md:ml-0"
                   />
                 </div>
               </div>
               <div className="mt-10 flex gap-10">
                 <button
-                  className="rounded-md bg-gray-400 px-4 py-2 duration-200 hover:bg-gray-500"
-                  type="submit"
+                  className="rounded-md bg-gray-400  px-4 py-2 duration-200 hover:bg-gray-500 focus:bg-gray-400"
+                  type="reset"
                 >
-                  Edit Data
+                  Reset Data
                 </button>
                 <button
-                  className="rounded-md bg-gray-400 px-4 duration-200 hover:bg-gray-500"
+                  className="-ml-[33px] rounded-md bg-gray-400 px-4 duration-200 hover:bg-gray-500 focus:bg-gray-400"
                   type="submit"
                 >
                   Save Data
