@@ -20,9 +20,9 @@ export default class LandingSection extends Component {
           </button>
         </div>
         {/* for md above */}
-        <div className="mb-5 mt-[9vh] hidden h-[90vh] justify-between px-[5vw] py-[4vh] md:flex">
+        <div className="mb-5 hidden h-[90vh] justify-between px-[5vw] py-[4vh] md:mt-[6vh] md:flex lg:mt-[9vh]">
           <div className="flex-1 self-end">
-            <h1 className="title-landing w-4/5 text-[5rem]">
+            <h1 className="title-landing w-4/5 text-[5rem] lg:text-[7rem]">
               FIND SOMETHING GREAT TO DO
             </h1>
             <p className="mt-6 w-4/5 text-[1.1rem]">
@@ -40,7 +40,7 @@ export default class LandingSection extends Component {
             <img
               src={bg1}
               alt=""
-              className="h-full w-2/3 rounded-md object-cover object-center "
+              className="h-full w-[22rem] rounded-md object-cover object-center lg:w-[30rem]"
             />
           </div>
         </div>

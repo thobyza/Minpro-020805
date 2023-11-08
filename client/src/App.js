@@ -25,14 +25,9 @@ const router = createBrowserRouter([
   { path: "/contact-info", element: <AccountInfo /> },
   { path: "/login", element: <LoginPage /> },
   { path: "/register", element: <RegisterPage /> },
-  // {
-  //   path: "/create-events",
-  //   element: <Required />,
-  //   children: [{ path: "create-events", element: <CreateEvents /> }],
-  // },
   { path: "/create-events", element: <CreateEvents /> },
   { path: "/browse-events", element: <BrowseEvents /> },
-  { path: "/event-details", element: <EventDetails /> },
+  { path: "/event-details/:id", element: <EventDetails /> },
   { path: "/tabs", element: <Tabs /> },
   { path: "/transaction", element: <TransactionPage /> }
 ]);

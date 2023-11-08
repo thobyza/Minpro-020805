@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Organizer.hasOne(models.Events)
+      // Organizer.hasOne(models.Events)
       Organizer.belongsTo(models.City)
     }
   }

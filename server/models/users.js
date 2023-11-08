@@ -12,6 +12,7 @@ module.exports = (sequelize, DataTypes) => {
       Users.belongsTo(models.UserDetails);
       // Users.belongsTo(models.Referrals);
       Users.hasMany(models.Transaction);
+      Users.hasMany(models.Events);
       Users.belongsTo(models.City);
       // Users.hasOne(models.Users);
     }
