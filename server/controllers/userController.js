@@ -7,8 +7,16 @@ const jwt = require("jsonwebtoken");
 module.exports = {
   register: async (req, res) => {
     try {
-      const { email, password, firstname, lastname, cellphone, referral } =
-        req.body;
+      const {
+        email,
+        password,
+        firstname,
+        lastname,
+        cellphone,
+        city,
+        referral,
+      } = req.body;
+
       const isEmailExist = await Users.findOne({
         where: {
           email,
@@ -55,6 +63,8 @@ module.exports = {
         firstname,
         lastname,
         cellphone,
+        city,
+
         Referrals: referral,
       });
 
@@ -88,6 +98,26 @@ module.exports = {
       res.status(400).send({ message: err.message });
     }
   },
+  getImg: async (req, res) => {
+    const { id } = req.users;
+    try {
+      const result = await Users.findOne({
+        where: {
+          id,
+        },
+      });
+      if (result) {
+        const img = result.img;
+        res.status(200).send(img);
+      } else {
+        res.status(400).send({ message: err.message });
+      }
+    } catch (err) {
+      console.log(err);
+      res.status(400).send({ message: err.message });
+    }
+  },
+
   login: async (req, res) => {
     try {
       const { email, password } = req.body;
@@ -138,6 +168,8 @@ module.exports = {
           lastname: lastname,
           city: city,
           cellphone: cellphone,
+          img: req.file?.path,
+
         },
         {
           where: {

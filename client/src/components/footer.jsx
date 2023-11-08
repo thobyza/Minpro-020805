@@ -69,7 +69,7 @@ export const Footer = () => {
                     href="#"
                     className="text-gray-300 transition hover:opacity-75"
                   >
-                    Privay & Terms
+                    Private & Terms
                   </a>
                 </li>
               </ul>

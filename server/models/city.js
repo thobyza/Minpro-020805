@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       City.hasMany(models.UserDetails);
       City.hasMany(models.Organizer);
+      City.hasMany(models.Events);
     }
   }
   City.init(

@@ -8,6 +8,8 @@ export const Navbar = () => {
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
   const profile = useSelector((state) => state.user.value);
+  let profileImg = profile.img;
+
   let Links = [
     { name: "Home", link: "/" },
     { name: "Create Events", link: "/create-events" },
@@ -17,7 +19,7 @@ export const Navbar = () => {
   const handleLogout = () => {
     localStorage.removeItem("token");
     navigate("/");
-    // window.location.reload();
+
   };
 
   let [open, setOpen] = useState(false);
@@ -26,12 +28,14 @@ export const Navbar = () => {
     <div className="fixed left-0 top-0 z-50 w-full shadow-md">
       <div className="items-center justify-between bg-white px-6 py-5 md:flex md:px-[5vw] md:py-3">
         {/* Logo */}
-        <div
-          className="flex cursor-pointer items-center font-[Poppins] text-2xl font-bold 
+        <a href="/">
+          <div
+            className="flex cursor-pointer items-center font-[Poppins] text-2xl font-bold 
                 text-gray-800"
-        >
-          <img src={appLogo} alt="" className="h-10" />
-        </div>
+          >
+            <img src={appLogo} alt="" className="h-10" />
+          </div>
+        </a>
         {/* Search bar */}
         {/* <div className="hidden flex-1 px-[8vw] md:flex">
           <input
@@ -75,7 +79,7 @@ export const Navbar = () => {
                 data-dropdown-toggle="userDropdown"
                 data-dropdown-placement="bottom-start"
                 class="relative mt-1.5 h-8 w-8 cursor-pointer rounded-full"
-                src={userLogo}
+                src={`http://localhost:2000/${profileImg}`}
                 alt="User dropdown"
               />
 
@@ -84,9 +88,9 @@ export const Navbar = () => {
                 className="z-10 hidden w-44 rounded-lg md:divide-y md:divide-gray-100 md:bg-white md:shadow"
               >
                 <div class="text-sm text-gray-900 md:px-4">
-                  <div class="-mx-4 cursor-pointer truncate py-2 pl-4 font-medium md:hover:rounded-t-lg md:hover:bg-gray-100">
-                    Switch to Account <br />{" "}
-                    <span className="text-accent-green-1">Organizer</span>
+                  <div class="-mx-4 cursor-pointer truncate py-2 pl-4 font-medium text-gray-700 md:hover:rounded-t-lg md:hover:bg-gray-100">
+                    Welcome {profile.firstname}
+
                   </div>
                 </div>
                 <ul

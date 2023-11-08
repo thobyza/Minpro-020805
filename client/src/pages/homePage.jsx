@@ -18,7 +18,7 @@ export const HomePage = () => {
     try {
       await axios.get(`http://localhost:2000/events`).then((response) => {
         setData(response.data.rows);
-        console.log(response.data.rows);
+        // console.log(response.data.rows);
       });
     } catch (err) {
       console.log(err);

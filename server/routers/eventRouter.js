@@ -1,3 +1,4 @@
+
 const router = require('express').Router()
 const { eventController } = require('../controllers');
 const { verifyToken } = require('../middleware/auth');
@@ -10,4 +11,3 @@ router.get('/upcoming', eventController.getUpcomingEvent);
 router.get('/by-category', eventController.getByCategory);
 router.get('/by-city', eventController.getByCity);
 
-module.exports = router

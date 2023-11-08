@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "mysql00!",
+    "password": "M0ngkeydluffY",
     "database": "miniproject_database",
     "host": "127.0.0.1",
     "dialect": "mysql"

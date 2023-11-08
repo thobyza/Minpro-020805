@@ -5,7 +5,7 @@ export const Dashboard = () => {
   const navigate = useNavigate();
 
   const handleNavigate = () => {
-    navigate("/home");
+    navigate("/");
     // window.onload = function () {
     //   window.location.reload();
     // };
