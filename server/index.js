@@ -6,7 +6,7 @@ const cors = require("cors");
 const app = express();
 app.use(express.json());
 app.use(cors());
-app.use("/public", express.static("./public"));
+app.use('/public', express.static('./public'))
 
 app.use("/api", (req, res) => {
   res.send("This is my API");
@@ -24,6 +24,7 @@ app.use("/city", cityRouter);
 app.use("/referral", referralRouter);
 app.use("/events", eventRouter);
 app.use("/event-category", categoryRouter);
+
 
 app.listen(PORT, () => {
   // db.sequelize.sync({ alter: true });

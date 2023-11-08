@@ -12,7 +12,6 @@ module.exports = (sequelize, DataTypes) => {
       City.hasMany(models.UserDetails);
       City.hasMany(models.Organizer);
       City.hasMany(models.Events);
-
     }
   }
   City.init(

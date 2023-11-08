@@ -28,6 +28,14 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       allowNull: true
     },
+    promotion_code: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
+    promotion_discount: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+    }
   }, {
     sequelize,
     modelName: 'Tickets',

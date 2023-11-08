@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 import { Select, initTE } from "tw-elements";
 initTE({ Select });
 
+
 const RegisterSchema = Yup.object().shape({
   email: Yup.string()
     .required("Email is required")
@@ -94,11 +95,13 @@ export function Register() {
     }
   };
 
+
   return (
     <>
       <div className=" flex min-h-screen flex-col items-center bg-bg-gradient to-white  bg-cover bg-center sm:justify-center sm:pt-0 lg:h-screen lg:bg-none">
         <a href="/">
           <div className="-mt-6 flex items-center gap-3 sm:-mt-12 lg:absolute lg:top-0 lg:-mt-5 lg:ml-[10.8%] ">
+
             <img
               className="w-12 pt-10 md:w-10 lg:w-10"
               src={imgLogo}
@@ -116,6 +119,7 @@ export function Register() {
           </div>
 
           <div className="md:px-19 m-auto mt-10 overflow-hidden rounded-2xl bg-white px-6 py-4 shadow-2xl sm:max-w-md sm:rounded-2xl lg:relative lg:col-span-1 lg:-mr-0 lg:mt-[85px] lg:bg-none lg:shadow-none">
+
             <header>
               <h1 className="title-head flex justify-center text-xl font-semibold md:text-2xl lg:justify-start">
                 Create your festihub account
@@ -204,6 +208,7 @@ export function Register() {
                           ))}
                         </Field>
                       </div>
+
                     </div>
 
                     <div className="mt-4">

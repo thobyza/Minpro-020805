@@ -19,6 +19,7 @@ export const AccountInfo = () => {
   const token = localStorage.getItem("token");
   const profile = useSelector((state) => state.user.value);
   let profileImg = profile.img;
+  console.log(profileImg);
   const id = profile.id;
   const initial = {
     firstname: profile.firstname || "",
@@ -32,12 +33,11 @@ export const AccountInfo = () => {
   const handleSaveData = async (data) => {
     console.log(data);
     const formData = new FormData();
-    formData.append("firstname", values.firstname);
-    formData.append("lastname", values.lastname);
-    formData.append("cellphone", values.cellphone);
-    formData.append("city", values.city);
-    formData.append("img", values.img);
-    window.location.reload();
+    formData.append("firstname", data.firstname);
+    formData.append("lastname", data.lastname);
+    formData.append("cellphone", data.cellphone);
+    formData.append("city", data.city);
+    formData.append("img", data.img);
 
     try {
       const response = await axios.patch(
@@ -57,6 +57,7 @@ export const AccountInfo = () => {
     } catch (err) {
       console.log(err);
     }
+    window.location.reload();
   };
 
   const handleImageChange = (e) => {
@@ -67,7 +68,6 @@ export const AccountInfo = () => {
   };
 
   const handleRemoveImage = () => {
-    profileImg = null;
     window.location.reload();
   };
 

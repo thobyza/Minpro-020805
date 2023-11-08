@@ -16,6 +16,7 @@ module.exports = {
         city,
         referral,
       } = req.body;
+
       const isEmailExist = await Users.findOne({
         where: {
           email,
@@ -63,6 +64,7 @@ module.exports = {
         lastname,
         cellphone,
         city,
+
         Referrals: referral,
       });
 
@@ -167,6 +169,7 @@ module.exports = {
           city: city,
           cellphone: cellphone,
           img: req.file?.path,
+
         },
         {
           where: {

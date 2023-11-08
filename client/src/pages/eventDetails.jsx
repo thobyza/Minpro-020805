@@ -1,20 +1,70 @@
 import { Navbar } from "../components/navbar";
-
-import dummyBanner from "../assets/omo-market.jpg";
-import dummyAva from "../assets/omo-market-ava.jpg";
+import axios from "axios";
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Footer } from "../components/footer";
 
 export const EventDetails = () => {
-  // bg-[#F5F5F5]
+  const { id } = useParams();
+  const [event, setEvent] = useState({});
+
+  const getEventDetail = async () => {
+    try {
+      await axios
+        .get(`http://localhost:2000/events/details/${id}`)
+        .then((response) => {
+          // console.log(response.data);
+          setEvent(response.data.result);
+        });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const newStartDate = new Date(event?.start_date).toLocaleDateString("en-GB", {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+  });
+
+  const newEndDate = new Date(event?.end_date).toLocaleDateString("en-GB", {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+  });
+
+  const newStartTime = new Date(
+    "1970-01-01T" + event?.start_time + "Z",
+  ).toLocaleTimeString("en-US", {
+    timeZone: "UTC",
+    hour12: true,
+    hour: "numeric",
+    minute: "numeric",
+  });
+
+  const newEndTime = new Date(
+    "1970-01-01T" + event?.end_time + "Z",
+  ).toLocaleTimeString("en-US", {
+    timeZone: "UTC",
+    hour12: true,
+    hour: "numeric",
+    minute: "numeric",
+  });
+
+  useEffect(() => {
+    getEventDetail();
+  }, []);
+
   return (
     <>
       <Navbar />
-      <section className="bg-[#F5F5F5]">
-        <div className="lg:pt-[14vh ] flex flex-col space-y-4 pt-[12vh] lg:flex-row lg:space-x-3 lg:space-y-0 lg:px-[9vw]">
+      <section className="bg-[#F5F5F5] pb-10">
+        <div className="flex flex-col space-y-4 pt-[12vh] lg:flex-row lg:space-x-3 lg:space-y-0 lg:px-[14vw] lg:pt-[14vh]">
           {/* Left side */}
           <div className="flex flex-col space-y-4 px-[3.5vw] lg:px-[1vw]">
             <div className="flex w-full lg:w-[24rem]">
               <img
-                src={dummyBanner}
+                src={`http://localhost:2000/${event?.img}`}
                 alt=""
                 className="h-[20rem] w-full rounded-lg object-cover"
               />
@@ -30,31 +80,35 @@ export const EventDetails = () => {
             <div className="space-y-3 rounded-lg bg-white px-7 py-8 md:px-12 md:py-9 lg:px-10 lg:py-7">
               <div>
                 <h1 className="mb-2 text-[1.5rem] font-semibold lg:text-[2.4rem]">
-                  OMO! MARKET K-POP FESTIVAL
+                  {event?.event_title}
                 </h1>
               </div>
-              <div className="flex flex-col space-y-1.5">
-                <h3 className="text-[1.2rem]">AD Premier Office Park</h3>
-                <h3 className="text-[1.2rem] text-gray-500">11 Nov 2023</h3>
-                <h3 className="text-[1.2rem] text-gray-500">
-                  10:00 - 22:00 WIB
-                </h3>
+              <div className="flex flex-col space-y-1.5 pb-2">
+                <h3 className="text-[1.2rem]">{event?.venue}</h3>
+                <h3 className="text-[1.2rem] text-gray-500">{`${newStartDate} - ${newEndDate}`}</h3>
+                <h3 className="text-[1.2rem] text-gray-500">{`${newStartTime} - ${newEndTime}`}</h3>
                 <div className="flex space-x-4 pt-2">
                   <div className="flex items-center">
                     <i className="ri-price-tag-3-line text-[#797979]"></i>
-                    <span className="ml-2 text-[#797979]">Festival</span>
+                    <span className="ml-2 text-[#797979]">
+                      {event?.category}
+                    </span>
                   </div>
                   <div>
                     <i className="ri-map-pin-line text-[#797979]"></i>
-                    <span className="ml-1.5 text-[#797979]">Jakarta</span>
+                    <span className="ml-1.5 text-[#797979]">{event?.city}</span>
                   </div>
                 </div>
               </div>
-              <div className="flex items-center space-x-5 rounded-lg border-[1px] border-solid border-[#E7E7E7] p-3">
-                <img src={dummyAva} alt="" className="h-12 rounded-full" />
+              <div className="flex items-center space-x-4 border-t border-[#E5E7EB] py-1">
+                <div className="">
+                  <i class="ri-apps-fill text-[3rem] text-gray-300"></i>
+                </div>
                 <div className="flex flex-col space-y-1">
                   <h4 className="text-[0.9rem] text-[#797979]">Event by</h4>
-                  <h4 className="text-[0.9rem] font-bold">OMO MARKET</h4>
+                  <h4 className="text-[0.9rem] font-bold">
+                    {event.User?.firstname}
+                  </h4>
                 </div>
               </div>
             </div>
@@ -63,17 +117,7 @@ export const EventDetails = () => {
               <div>
                 <h3 className="text-[1.5rem] font-semibold">About</h3>
                 <p className="mt-3.5 text-justify text-[0.9rem]">
-                  OMO! Market, sebuah festival yang tidak hanya memanjakan para
-                  pecinta K-Pop, tetapi juga merangkul semangat budaya pop Korea
-                  dalam sebuah pengalaman yang unik dan mendalam. Tanggal 11-12
-                  November 2023 adalah hari di mana Jakarta akan menjadi pusat
-                  K-Pop terbesar yang pernah ada!
-                  <br />
-                  <br />
-                  Bergabunglah dalam festival K-Pop yang luar biasa ini di OMO!
-                  Market pada 11-12 November 2023. Dapatkan tiket Anda sekarang
-                  dan bersiap-siaplah untuk memasuki dunia K-Pop yang
-                  spektakuler dan tak terlupakan!
+                  {event?.description}
                 </p>
               </div>
               <div className="py-2">
@@ -81,20 +125,14 @@ export const EventDetails = () => {
                   Terms & Conditions
                 </h3>
                 <p className="mt-3.5 text-justify text-[0.9rem]">
-                  Harga sudah termasuk pajak & admin fee. Tiket yang sudah
-                  dibeli tidak dapat dikembalikan. Tiket yang sudah dibeli tidak
-                  dapat diganti jadwalnya. Pembeli wajib mengisi data diri
-                  pribadi saat memesan. Penjualan tiket sewaktu-waktu dapat
-                  dihentikan atau dimulai sesuai dengan kebijakan dari promotor.
-                  Pengunjung wajib menjaga protokol kesehatan yang berlaku.
-                  Dilarang membawa hewan, senjata tajam, dan senjata api.
-                  <br />
+                  {event?.termsCondition}
                 </p>
               </div>
             </div>
           </div>
         </div>
       </section>
+      <Footer />
     </>
   );
 };

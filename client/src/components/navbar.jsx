@@ -9,22 +9,24 @@ export const Navbar = () => {
   const navigate = useNavigate();
   const profile = useSelector((state) => state.user.value);
   let profileImg = profile.img;
+
   let Links = [
     { name: "Home", link: "/" },
-    { name: "Create Events", link: "/" },
+    { name: "Create Events", link: "/create-events" },
     { name: "Discover", link: "/" },
   ];
 
   const handleLogout = () => {
     localStorage.removeItem("token");
     navigate("/");
+
   };
 
   let [open, setOpen] = useState(false);
 
   return (
-    <div className="fixed left-0 top-0 z-20 w-full shadow-md">
-      <div className="items-center justify-between bg-white px-6 py-5 md:flex md:px-10 md:py-3">
+    <div className="fixed left-0 top-0 z-50 w-full shadow-md">
+      <div className="items-center justify-between bg-white px-6 py-5 md:flex md:px-[5vw] md:py-3">
         {/* Logo */}
         <a href="/">
           <div
@@ -35,7 +37,7 @@ export const Navbar = () => {
           </div>
         </a>
         {/* Search bar */}
-        <div className="hidden flex-1 px-[8vw] md:flex">
+        {/* <div className="hidden flex-1 px-[8vw] md:flex">
           <input
             type="search"
             id="default-search"
@@ -43,7 +45,7 @@ export const Navbar = () => {
             placeholder="Search events..."
           />
           <ion-icon name="search-outline"></ion-icon>
-        </div>
+        </div> */}
         {/* dropdown menu */}
         <div
           onClick={() => setOpen(!open)}
@@ -88,6 +90,7 @@ export const Navbar = () => {
                 <div class="text-sm text-gray-900 md:px-4">
                   <div class="-mx-4 cursor-pointer truncate py-2 pl-4 font-medium text-gray-700 md:hover:rounded-t-lg md:hover:bg-gray-100">
                     Welcome {profile.firstname}
+
                   </div>
                 </div>
                 <ul
