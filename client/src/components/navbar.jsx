@@ -10,7 +10,7 @@ export const Navbar = () => {
   const profile = useSelector((state) => state.user.value);
   let Links = [
     { name: "Home", link: "/" },
-    { name: "Create Events", link: "/" },
+    { name: "Create Events", link: "/create-events" },
     { name: "Discover", link: "/" },
   ];
 
@@ -23,8 +23,8 @@ export const Navbar = () => {
   let [open, setOpen] = useState(false);
 
   return (
-    <div className="fixed left-0 top-0 z-20 w-full shadow-md">
-      <div className="items-center justify-between bg-white px-6 py-5 md:flex md:px-10 md:py-3">
+    <div className="fixed left-0 top-0 z-50 w-full shadow-md">
+      <div className="items-center justify-between bg-white px-6 py-5 md:flex md:px-[5vw] md:py-3">
         {/* Logo */}
         <div
           className="flex cursor-pointer items-center font-[Poppins] text-2xl font-bold 
@@ -33,7 +33,7 @@ export const Navbar = () => {
           <img src={appLogo} alt="" className="h-10" />
         </div>
         {/* Search bar */}
-        <div className="hidden flex-1 px-[8vw] md:flex">
+        {/* <div className="hidden flex-1 px-[8vw] md:flex">
           <input
             type="search"
             id="default-search"
@@ -41,7 +41,7 @@ export const Navbar = () => {
             placeholder="Search events..."
           />
           <ion-icon name="search-outline"></ion-icon>
-        </div>
+        </div> */}
         {/* dropdown menu */}
         <div
           onClick={() => setOpen(!open)}

@@ -100,6 +100,56 @@ export const CreateEventsTickets = ({ formik }) => {
                   Quantity
                 </span>
               </label>
+              {/* PROMOTION CODE */}
+              <div className="flex flex-col md:flex-row md:space-x-3 md:px-0">
+                {/* left */}
+                <div className="mb-4 flex flex-col items-start justify-center space-y-1 rounded-lg bg-[#f0f2f5] px-5 py-4 md:mb-0 md:w-max">
+                  <h4 className="text-[1rem] font-semibold text-gray-800">
+                    Promotion Code
+                  </h4>
+                  <p className="text-[0.9rem] text-gray-600">
+                    you can add an optional discount to your event
+                  </p>
+                </div>
+                {/* Right */}
+                <div className="w-full space-y-3">
+                  {/* Promotion code */}
+                  <label className="relative  block rounded-md border border-[#D4D4D5] focus-within:border-accent-green-1 focus-within:ring-1 focus-within:ring-accent-green-1">
+                    <input
+                      type="text"
+                      name="promotion_code"
+                      value={formik.values.promotion_code}
+                      onChange={formik.handleChange}
+                      maxlength="6"
+                      // required={true}
+                      min="0"
+                      className="peer w-full border-none bg-transparent px-4 py-3 placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0"
+                      placeholder="Event Title"
+                    />
+
+                    <span className="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-gray-50 p-0.5 px-1.5 text-sm font-medium text-gray-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-0 peer-focus:text-xs">
+                      Promotion Code
+                    </span>
+                  </label>
+                  {/* Discount */}
+                  <label className="relative  block rounded-md border border-[#D4D4D5] focus-within:border-accent-green-1 focus-within:ring-1 focus-within:ring-accent-green-1">
+                    <input
+                      type="number"
+                      name="promotion_discount"
+                      value={formik.values.promotion_discount}
+                      onChange={formik.handleChange}
+                      // required={true}
+                      min="0"
+                      className="peer w-full border-none bg-transparent px-4 py-3 placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0"
+                      placeholder="Event Title"
+                    />
+
+                    <span className="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-gray-50 p-0.5 px-1.5 text-sm font-medium text-gray-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-0 peer-focus:text-xs">
+                      Discount
+                    </span>
+                  </label>
+                </div>
+              </div>
             </div>
             {/* Free Events Form */}
             <div

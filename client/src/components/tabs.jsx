@@ -181,7 +181,7 @@ export const Tabs = ({ setSelectedCity, setSelectedCategory }) => {
                       >
                         <button
                           onClick={() => handleCategoryChange(item.name)}
-                          className="flex min-w-min flex-col items-center justify-between overflow-hidden rounded-xl border border-gray-300 px-4 py-3.5 transition duration-300 ease-in-out hover:border-accent-green-1 hover:bg-accent-green-1 hover:bg-opacity-10"
+                          className="flex min-w-min flex-col items-center justify-between overflow-hidden rounded-xl border border-gray-300 px-4 py-3.5 transition duration-300 ease-in-out hover:border-accent-green-1 hover:bg-accent-green-1 hover:bg-opacity-10 focus:border-accent-green-1 focus:bg-accent-green-1 focus:bg-opacity-10"
                         >
                           <img
                             src={item.icon}

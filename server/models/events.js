@@ -11,8 +11,8 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Events.belongsTo(models.Organizer)
-      Events.hasMany(models.Tickets)
+      Events.belongsTo(models.Users)
+      Events.hasOne(models.Tickets)
       Events.hasOne(models.Transaction)
       Events.hasOne(models.promo_code)
     }

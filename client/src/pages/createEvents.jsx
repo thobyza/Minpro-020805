@@ -28,6 +28,8 @@ const ValidationSchema = Yup.object({
 });
 
 export const CreateEvents = () => {
+  const token = localStorage.getItem("token");
+
   const formik = useFormik({
     initialValues: {
       img: null,
@@ -44,6 +46,8 @@ export const CreateEvents = () => {
       ticket_name: "",
       ticket_price: null,
       ticket_quantity: null,
+      promotion_code: "",
+      promotion_discount: null,
     },
     validationSchema: ValidationSchema,
     onSubmit: async (values, action) => {
@@ -62,20 +66,28 @@ export const CreateEvents = () => {
         data.append("ticket_name", values.ticket_name);
         data.append("ticket_price", values.ticket_price);
         data.append("ticket_quantity", values.ticket_quantity);
+        data.append("promotion_code", values.promotion_code);
+        data.append("promotion_discount", values.promotion_discount);
         data.append("img", values.img);
 
+        console.log(data);
         console.log(values.img);
 
-        await axios.post("http://localhost:2000/events", data);
+        await axios.post("http://localhost:2000/events", data, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
         // console.log(response);
         // console.log("Event created successfully", response.data);
         console.log("Event created successfully", data);
 
         alert("event created successfully");
+
         // window.location.reload();
       } catch (error) {
         console.log("error creating event:", error);
       }
+
+      action.resetForm();
     },
   });
 
