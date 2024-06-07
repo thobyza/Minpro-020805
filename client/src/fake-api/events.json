@@ -112,7 +112,7 @@
       },
       {
         "id": 12, 
-        "name": "accusamus beatae",
+        "name": "accusamurs beatae",
         "url": "https://picsum.photos/500/200?random=13",
         "price": 175000,
         "location": "Bandung",
@@ -136,7 +136,7 @@
         "url": "https://picsum.photos/500/200?random=141",
         "price": 175000,
         "location": "Bandung",
-        "category": "concert",
+        "category": "Concert",
         "date": "2023-10-25",
         "organizer": "Smitham Inc"
       },
